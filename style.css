@@ -1,0 +1,85 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
+
+html, body {
+    margin: 0;
+    padding: 0em;
+    height: 100%;
+    background: linear-gradient(45deg,#2b063d , #591878);
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+     overflow: hidden;
+
+}
+h1{
+  text-align: center;
+}
+.chartContainer{
+
+  width: 50%;
+  height: 10em;
+  position: absolute;
+
+}
+#scoreTextContainer{
+  margin-top: 10%;
+
+  position: absolute;
+  width: 100%;
+}
+#scoreContainer{
+  text-align: center;
+
+}
+#teamScoreChart{
+
+  position: absolute;
+
+
+}
+#map{
+  font-size: 0.8em;
+  height: 0em;
+
+}
+#teamScore{
+  font-size: 3em;
+  height: 0em;
+
+
+}
+#roundsLeft{
+  font-size: 0.8em;
+
+}
+.moneyContainer{
+  width: 100%;
+  height: 50%;
+  padding-top: 75%;
+}
+
+.money{
+  font-size: 3em;
+}
+
+.onLoss{
+  width: auto;
+  height: auto;
+  float: left;
+  text-align: center;
+  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  background: #591878;
+   overflow: hidden;
+}
+.onWin{
+  width: auto;
+  height: auto;
+  float: right;
+  text-align: center;
+  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  background: #591878;
+   overflow: hidden;
+}

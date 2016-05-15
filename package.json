@@ -1,0 +1,17 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "d",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Johan Jäderblom",
+  "license": "ISC",
+  "devDependencies": {
+    "electron-prebuilt": "^1.0.2"
+  },
+  "dependencies": {
+    "chart.js": "^2.1.3"
+  }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href = "style.css">
+    <title>StateTrak™(Alpha)</title>
+<script src="Chart.js"></script>
+  </head>
+
+
+
+  <body>
+
+    <div id ="scoreContainer">
+      <div id="scoreTextContainer">
+
+
+      <p id ="map">de_cache</p>
+      <p id = "teamScore">2:5</p>
+      <p id = "roundsLeft">X rounds left</p>
+    </div>
+<div class="chartContainer">
+  <canvas id="teamScoreChart" width="100" height="100"></canvas>
+
+
+</div>
+</div>
+<!--Current score in the game represented by a doughnut graph-->
+<script>
+var ctx = document.getElementById("teamScoreChart");
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+  labels: [],
+  datasets: [
+      {
+          data: [5, 2],
+          backgroundColor: [
+              "#e94835",
+              "#60c0be"
+          ],
+          hoverBackgroundColor: [
+            "#e94835",
+            "#60c0be"
+          ],
+          borderColor: [
+            "#e94835",
+            "#60c0be"
+          ]
+      }]
+},
+    options: {
+      cutoutPercentage:80,
+      animation:{
+        animateRotate: false
+      }
+
+    }
+});
+    </script>
+
+
+    <div class="moneyContainer">
+      <div class="onLoss">
+      <p class = "money">
+        $2000
+      </p>
+      </div>
+      <div class="onWin">
+      <p class = "money">
+        $2000
+      </p>
+      </div>
+    </div>
+
+
+  </body>
+</html>
