@@ -15,55 +15,61 @@ h1{
 }
 .chartContainer{
 
-  width: 50%;
-  height: 10em;
+  width: 280px;
+  height: 280px;
+  padding-left: 200px;
+  padding-top: 80px;
   position: absolute;
 
 }
 #scoreTextContainer{
-  margin-top: 10%;
-
+  padding-top: 145px;
+  width:280px;
+  height: 280px;
+  padding-left: 200px;
   position: absolute;
-  width: 100%;
+
 }
 #scoreContainer{
   text-align: center;
 
 }
 #teamScoreChart{
-
-  position: absolute;
-
-
+  width: 100;
+  height: 100;
 }
 #map{
-  font-size: 0.8em;
-  height: 0em;
-
+  font-size: 15px;
+  height:0px;
 }
 #teamScore{
-  font-size: 3em;
-  height: 0em;
+  font-size: 40px;
+  height: 0px;
 
 
 }
 #roundsLeft{
-  font-size: 0.8em;
+  font-size: 15px;
 
 }
 .moneyContainer{
   width: 100%;
-  height: 50%;
-  padding-top: 75%;
+  margin-top: 400px;
+  position: absolute;
+
 }
 
-.money{
-  font-size: 3em;
+#lossmoney{
+  font-size: 200%;
+
+}
+#winmoney{
+  font-size: 200%;
 }
 
 .onLoss{
-  width: auto;
-  height: auto;
+  width: 240px;
+  height: 120px;
   float: left;
   text-align: center;
   -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
@@ -71,10 +77,11 @@ h1{
   box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
   background: #591878;
    overflow: hidden;
+   margin-left: 40px;
 }
 .onWin{
-  width: auto;
-  height: auto;
+  width: 240px;
+  height: 120px;
   float: right;
   text-align: center;
   -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
@@ -82,4 +89,32 @@ h1{
   box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
   background: #591878;
    overflow: hidden;
+   margin-right: 40px;
+}
+.bonusContainer{
+  width:200px;
+  height: 80px;
+  margin-left: 240px;
+  text-align: center;
+  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  background: #591878;
+   overflow: hidden;
+   margin-top: 560px;
+   position: absolute;
+}
+
+.statsContainer{
+  width:600px;
+  height: 80px;
+  margin-left: 40px;
+  text-align: center;
+  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  background: #591878;
+   overflow: hidden;
+   margin-top: 680px;
+   position: absolute;
 }

@@ -5,8 +5,8 @@ const {BrowserWindow} = electron;
 
 app.on('ready', function(){
   win = new BrowserWindow({
-    width: 612,
-    height: 792,
+    width: 680,
+    height: 880,
     resizable: false,
     maximizable: false,
     icon: "statetrakwinicon.ico"

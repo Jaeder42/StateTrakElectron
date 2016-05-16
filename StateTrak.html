@@ -15,12 +15,12 @@
       <div id="scoreTextContainer">
 
 
-      <p id ="map">de_cache</p>
+
       <p id = "teamScore">2:5</p>
       <p id = "roundsLeft">X rounds left</p>
     </div>
 <div class="chartContainer">
-  <canvas id="teamScoreChart" width="100" height="100"></canvas>
+  <canvas id="teamScoreChart" width="280" height="280"></canvas>
 
 
 </div>
@@ -62,15 +62,26 @@ var myDoughnutChart = new Chart(ctx, {
 
     <div class="moneyContainer">
       <div class="onLoss">
-      <p class = "money">
+      <p id="lossmoney">
         $2000
       </p>
       </div>
       <div class="onWin">
-      <p class = "money">
+      <p id = "winmoney">
         $2000
       </p>
       </div>
+    </div>
+
+    <div class="bonusContainer">
+      <p class = "lossbonus">
+        $2000
+      </p>
+
+    </div>
+
+    <div class="statsContainer">
+
     </div>
 
 
