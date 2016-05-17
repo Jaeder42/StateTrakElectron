@@ -3,15 +3,19 @@ var winloss = document.getElementById("teamScore");
 
 //var win = Math.random(0,16);
 //var loss = Math.random(0,16);
-loss = 15;
+loss = 7;
 win = 0;
 drawChart();
-//setInterval(drawChart,1000);
+setInterval(drawChart,1000);
 
 
 
 function drawChart() {
     win++;
+    if(win > 16)
+      win = 0;
+
+
     winloss.innerHTML = win + ":" + loss;
     var data = {
     labels: [],
@@ -38,7 +42,7 @@ function drawChart() {
       type: 'doughnut',
       data: data,
       options: {
-        cutoutPercentage:80,
+        cutoutPercentage:85,
         animation:{
           animateRotate: false
         }
