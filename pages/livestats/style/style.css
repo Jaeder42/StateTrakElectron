@@ -13,6 +13,26 @@ html, body {
 }
 h1{
   text-align: center;
+  font-size: 42px;
+  margin: 0;
+  margin-top: -5px;
+  padding: 0;
+}
+
+h2{
+
+
+}
+
+h3{
+
+
+}
+
+p{
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
 }
 .chartContainer{
 
@@ -24,7 +44,7 @@ h1{
 
 }
 #scoreTextContainer{
-  padding-top: 145px;
+  padding-top: 195px;
   width:280px;
   height: 280px;
   padding-left: 200px;
@@ -47,25 +67,28 @@ h1{
   font-size: 40px;
   height: 0px;
 
-
 }
 #roundsLeft{
   font-size: 15px;
+  padding-top: 45px;
 }
 
 .moneyContainer{
   width: 100%;
   margin-top: 400px;
   position: absolute;
-
 }
 
 #lossmoney{
-  font-size: 200%;
+
+  font-weight: 800;
+  color: #e94835;
 
 }
 #winmoney{
-  font-size: 200%;
+
+  font-weight: 800;
+  color: #60c0be;
 }
 
 .onLoss{
@@ -79,6 +102,7 @@ h1{
   background: #591878;
    overflow: hidden;
    margin-left: 40px;
+   padding-top: 15px;
 }
 .onWin{
   width: 240px;
@@ -91,6 +115,7 @@ h1{
   background: #591878;
    overflow: hidden;
    margin-right: 40px;
+   padding-top: 15px;
 }
 .bonusContainer{
   width:200px;
