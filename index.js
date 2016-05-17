@@ -16,7 +16,7 @@ app.on('ready', function(){
     height: 880,
     resizable: false,
     maximizable: false,
-    icon: "statetrakwinicon.ico",
+    icon: "assets/statetrakwinicon.ico",
     backgroundColor: "#2b063d"
   })
   win.loadURL(`file://${__dirname}/pages/livestats/index.html`);

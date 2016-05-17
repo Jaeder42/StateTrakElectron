@@ -11,3 +11,63 @@ html, body {
     overflow: hidden;
 
 }
+
+.picture{
+  margin-left: 40px;
+  margin-top: 40px;
+  width: 180px;
+  position: absolute;
+}
+h1{
+  margin-left: 240px;
+  margin-top: 80px;
+  position: absolute;
+}
+#steamid{
+  margin-left: 240px;
+  margin-top: 140px;
+  position: absolute;
+}
+#steamidnr{
+  margin-left: 240px;
+  margin-top:160px;
+  position: absolute;
+}
+.trophy{
+  width: 40px;
+  height: 40px;
+  position: absolute;
+}
+.result{
+  position: absolute;
+}
+.trophytop{
+  margin-top: 280px;
+}
+.resulttop{
+  margin-top: 290px;
+}
+.trophybottom{
+  margin-top: 360px;
+}
+.resultbottom{
+  margin-top: 370px;
+}
+.trophyleft{
+  margin-left: 120px;
+}
+.resultleft{
+  margin-left: 180px;
+}
+.trophymid{
+  margin-left: 280px;
+}
+.resultmid{
+  margin-left: 340px;
+}
+.trophyright{
+  margin-left: 440px;
+}
+.resultright{
+  margin-left: 500px;
+}
