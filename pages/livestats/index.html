@@ -2,9 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href = "style.css">
+    <link rel="stylesheet" type="text/css" href = "style/style.css">
+
     <title>StateTrak™(Alpha)</title>
-<script src="Chart.js"></script>
+<script src="../../Chart.js"></script>
+<script src="../scripts/menu.js"></script>
   </head>
 
 
@@ -25,39 +27,7 @@
 
 </div>
 </div>
-<!--Current score in the game represented by a doughnut graph-->
-<script>
-var ctx = document.getElementById("teamScoreChart");
-var myDoughnutChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-  labels: [],
-  datasets: [
-      {
-          data: [5, 2],
-          backgroundColor: [
-              "#e94835",
-              "#60c0be"
-          ],
-          hoverBackgroundColor: [
-            "#e94835",
-            "#60c0be"
-          ],
-          borderColor: [
-            "#e94835",
-            "#60c0be"
-          ]
-      }]
-},
-    options: {
-      cutoutPercentage:80,
-      animation:{
-        animateRotate: false
-      }
 
-    }
-});
-    </script>
 
 
     <div class="moneyContainer">
@@ -86,4 +56,5 @@ var myDoughnutChart = new Chart(ctx, {
 
 
   </body>
+      <script src = "scorechart.js"></script>
 </html>
