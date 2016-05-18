@@ -5,10 +5,7 @@ const {BrowserWindow} = electron;
 var win;
 const ipcMain = require('electron').ipcMain;
 
-ipcMain.on('asynchronous-message', function(event, arg) {
-  console.log(arg);  // prints "ping"
 
-});
 
 app.on('ready', function(){
   win = new BrowserWindow({
@@ -16,10 +13,11 @@ app.on('ready', function(){
     height: 880,
     resizable: false,
     maximizable: false,
-    icon: "assets/statetrakwinicon.ico",
+    icon: "assets/icon2_1024px.png",
     backgroundColor: "#2b063d"
   })
-  win.loadURL(`file://${__dirname}/pages/livestats/index.html`);
+  win.loadURL(`file://${__dirname}/pages/loadingscreen/index.html`);
+
 
   ipcMain.on('livestats', function(event, arg) {
 
@@ -29,6 +27,12 @@ app.on('ready', function(){
 
   ipcMain.on('profile',  function(event, arg) {
     win.loadURL(`file://${__dirname}/pages/profile/index.html`);
+    win.show();
+
+  });
+  ipcMain.on('loading',  function(event, arg) {
+    
+    win.loadURL(`file://${__dirname}/pages/loadingscreen/index.html`);
     win.show();
 
   });
