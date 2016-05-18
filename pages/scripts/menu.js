@@ -40,6 +40,14 @@ var menuitem = [
         if(focusedWindow)
           ipcRenderer.send('profile', 'profile');
       }
+    },
+    {
+      label: 'Loading',
+      accelerator: 'CmdOrCtrl+E',
+      click: function(item, focusedWindow){
+        if(focusedWindow)
+          ipcRenderer.send('loading', 'loading');
+      }
     }
 
   ]
