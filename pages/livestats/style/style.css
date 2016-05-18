@@ -13,7 +13,7 @@ html, body {
 }
 h1{
   text-align: center;
-  font-size: 42px;
+  font-size: 54px;
   margin: 0;
   margin-top: -5px;
   padding: 0;
@@ -96,9 +96,13 @@ p{
   height: 120px;
   float: left;
   text-align: center;
-  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  border: solid #591878 .1px;
+  box-shadow:
+  0 0 4px 4px rgba(40,7,54,1),
+  0 4px 4px rgba(255,255,255,1),
+  inset 0 -2px 2px rgba(40,7,54,0.5),
+  inset 0 0 4px 2px rgba(40,7,54,0.5),
+  inset 0 2px 2px rgba(255,255,255,0.6);
   background: #591878;
    overflow: hidden;
    margin-left: 40px;
@@ -109,9 +113,14 @@ p{
   height: 120px;
   float: right;
   text-align: center;
-  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  border-radius: 2px;
+  border: solid #591878 .1px;
+  box-shadow:
+  0 0 4px 4px rgba(40,7,54,1),
+  0 4px 4px rgba(255,255,255,1),
+  inset 0 -2px 2px rgba(40,7,54,0.5),
+  inset 0 0 4px 2px rgba(40,7,54,0.5),
+  inset 0 2px 2px rgba(255,255,255,0.6);
   background: #591878;
    overflow: hidden;
    margin-right: 40px;
@@ -122,9 +131,13 @@ p{
   height: 80px;
   margin-left: 240px;
   text-align: center;
-  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  border: solid #591878 .1px;
+  box-shadow:
+  0 0 4px 4px rgba(40,7,54,1),
+  0 4px 4px rgba(255,255,255,1),
+  inset 0 -2px 2px rgba(40,7,54,0.5),
+  inset 0 0 4px 2px rgba(40,7,54,0.5),
+  inset 0 2px 2px rgba(255,255,255,0.6);
   background: #591878;
    overflow: hidden;
    margin-top: 560px;
@@ -136,9 +149,13 @@ p{
   height: 80px;
   margin-left: 40px;
   text-align: center;
-  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
+  border: solid #591878 .1px;
+  box-shadow:
+  0 0 4px 4px rgba(40,7,54,1),
+  0 4px 4px rgba(255,255,255,1),
+  inset 0 -2px 2px rgba(40,7,54,0.5),
+  inset 0 0 4px 2px rgba(40,7,54,0.5),
+  inset 0 2px 2px rgba(255,255,255,0.6);
   background: #591878;
    overflow: hidden;
    margin-top: 680px;
