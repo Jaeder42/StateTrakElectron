@@ -1,14 +1,24 @@
 var CSGSI = require('../index');
 var gsi = new CSGSI();
 
+// Add events that you want to listen for here,
+// check the documentation for what events you can listen to
+// and the methods available for use.
 
 // Provider events
 gsi.on('provider', function(providerData) {
   console.log("Provider name: " + providerData.getProviderName());
 });
 
-
 // Map events
+gsi.on('gameMapData', function(mapData) {
+  console.log(mapData.getMapName());
+  console.log(mapData.getMapPhase());
+  console.log(mapData.getMapRound());
+  console.log(mapData.getMapCTScore());
+  console.log(mapData.getMapTScore());
+});
+
 gsi.on('gameMap', function(map) {
   console.log('Current map:' + map);
 });
@@ -29,7 +39,6 @@ gsi.on('gameTscore', function(tScore) {
   console.log('T round score:' + tScore);
 });
 
-
 // Round events
 gsi.on('roundPhase', function(phase) {
   console.log('Current round state:' + phase);
@@ -40,7 +49,6 @@ gsi.on('roundWinTeam', function(winner) {
 });
 
 // Player events
-
 gsi.on('player', function(playerData) {
   console.log("Player name: " + playerData.getPlayerName());
 });

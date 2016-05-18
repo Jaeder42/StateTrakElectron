@@ -1,18 +1,18 @@
 module.exports = CSGSI;
 
-var http          = require('http');
-var express       = require('express');
-var bodyParser    = require('body-parser');
-var provider      = require('./provider.js');
-var map           = require('./map.js');
-var round         = require('./round.js');
-var player        = require('./player.js');
-var playerState   = require('./playerState.js');
-var playerWeapons = require('./playerWeapons.js');
+var http             = require('http');
+var express          = require('express');
+var bodyParser       = require('body-parser');
+var provider         = require('./provider.js');
+var map              = require('./map.js');
+var round            = require('./round.js');
+var player           = require('./player.js');
+var playerState      = require('./playerState.js');
+var playerWeapons    = require('./playerWeapons.js');
 var playerMatchStats = require('./playerMatchStats.js');
+var bomb             = require('./bomb.js');
 
 require("util").inherits(CSGSI, require("events").EventEmitter);
-
 var app    = express();
 var server = http.createServer(app);
 
@@ -21,26 +21,12 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+
 function CSGSI() {
   var self = this;
-  require('events').EventEmitter.call(this);
-
-  // Setup server listening
-  server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
-    var addr = server.address();
-    console.log("CSGSI server listening on", addr.address + ":" + addr.port);
-  });
-
-  // Handle requests from the CSGO client
-  app.post("/", function(req, res) {
-    if (typeof req.body !== 'undefined') {
-      self.emit('all', req.body);
-      self.process(req.body);
-    }
-  });
-
-  this._IsBombPlanted = false;
-  this._c4Internal;
+  var eventEmitter = require('events').EventEmitter.call(this);
+  this.SetupCSGSIServer();
+  this.ProcessCSGSIRequests(self);
 }
 
 CSGSI.prototype.process = function(data) {
@@ -52,8 +38,7 @@ CSGSI.prototype.process = function(data) {
   var playerStateData;
   var playerWeaponsData;
   var playerMatchStatsData;
-
-  // The types of events we are interested
+  var BombData;
 
   // We have provider data
   if (typeof data.provider !== 'undefined') {
@@ -63,20 +48,19 @@ CSGSI.prototype.process = function(data) {
   // We have map data
   if (typeof data.map !== 'undefined') {
     this.mapData = new map.MapNode(data.map);
-    this.emit('gameMap', this.mapData.getMapName());
-    this.emit('gamePhase', this.mapData.getMapPhase());
-    this.emit('gameRounds', this.mapData.getMapRound());
-    this.emit('gameCTscore', this.mapData.getMapCTScore());
-    this.emit('gameTscore', this.mapData.getMapTScore());
+    this.emit('gameMapData', this.mapData);
   }
 
   // We have round data
   if(typeof data.round !== 'undefined') {
     this.roundData = new round.RoundNode(data.round);
+    this.Bomb = new bomb.Bomb(this.roundData, data.provider);
 
+    // Round state
     var maxTime = 0;
-    this.emit('roundPhase', this.roundData.getRoundPhase());
-    switch(this.roundData.getRoundPhase()) {
+    var roundPhase = this.roundData.getRoundPhase();
+    this.emit('roundPhase', roundPhase);
+    switch(roundPhase) {
       case 'live':
         maxTime = 115;
         break;
@@ -84,30 +68,23 @@ CSGSI.prototype.process = function(data) {
         maxTime = 15;
         break;
       case 'over':
-        if (this._IsBombPlanted) {
-          this._IsBombPlanted = false;
-          clearInterval(this._c4Internal);
-        }
+        this.Bomb.bombReset();
         this.emit('roundWinTeam', this.roundData.getRoundWinTeam());
         break;
     }
-    if(typeof this.roundData.getRoundBombState() !== 'undefined') {
+
+    // Bomb state
+    var bombState = this.roundData.getRoundBombState();
+    if(typeof bombState !== 'undefined') {
       // Exploded, planted, defused
-      this.emit('bombState', this.roundData.getRoundBombState());
-      switch(this.roundData.getRoundBombState()) {
+      this.emit('bombState', bombState);
+      switch(bombState) {
         case 'planted':
-          if (!this._IsBombPlanted) {
-            this._IsBombPlanted = true;
-            var timeLeft = 40 - (new Date().getTime() / 1000 - this.providerData.getProviderTimestamp());
-            this.emit('bombTimeStart', timeLeft);
-            this.c4CountDown(timeLeft);
-          }
+          this.Bomb.setBombPlanted(bombState, this.eventEmitter);
           break;
           case 'defused':
           case 'exploded':
-            this._IsBombPlanted = false;
-            clearInterval(this._c4Internal);
-            break;
+            this.Bomb.bombReset();
         }
       }
   }
@@ -136,18 +113,22 @@ CSGSI.prototype.process = function(data) {
     this.emit('playerMatchStats', this.playerMatchStatsData);
   }
 
-  };
+};
 
-CSGSI.prototype.c4CountDown = function(time) {
-  var self = this;
-  this._c4Internal = setInterval(function() {
-    time = time - 1;
-    if (time <= 0) {
-      clearInterval(self._c4Internal);
-      // Counter ended
-      self._IsBombPlanted = false;
-      return;
+CSGSI.prototype.SetupCSGSIServer = function() {
+  // Setup server listening
+  server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
+    var addr = server.address();
+    console.log("CSGSI server listening on", addr.address + ":" + addr.port);
+  });
+};
+
+CSGSI.prototype.ProcessCSGSIRequests = function(self) {
+  // Handle requests from the CSGO client
+  app.post("/", function(req, res) {
+    if (typeof req.body !== 'undefined') {
+      self.emit('all', req.body);
+      self.process(req.body);
     }
-    self.emit('bombTimeLeft', time);
-  }, 1000);
+  });
 };
