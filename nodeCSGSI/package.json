@@ -1,0 +1,17 @@
+{
+  "name": "csgsi",
+  "version": "1.0.0",
+  "description": "Counter Strike : Global Offensive (Gamestate integration)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eli Lilja",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "docco": "^0.7.0",
+    "express": "^4.13.4",
+    "http": "0.0.0"
+  }
+}

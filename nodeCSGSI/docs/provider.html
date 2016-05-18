@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>provider.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>provider.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2 id="description">Description</h2>
+<p><code>ProviderNode</code> is a JSON object that contains information about the provider of the data.</p>
+<h2 id="members">Members</h2>
+<p><code>name</code> of the provider</p>
+<p><code>appid</code> application id (e.g CS:GO)</p>
+<p><code>version</code> game version of the application</p>
+<p><code>steamid</code> of the player (in steamID64 format)</p>
+<p><code>timestamp</code> of the <code>ProviderNode</code> object</p>
+<p><code>previousProviderState</code> is defined if the provider node contains a previous ProviderNode object</p>
+<p><code>addedProviderState</code> is defined if the provider node contains an added ProviderNode object</p>
+<h2 id="functions">Functions</h2>
+<p><code>getPreviousProviderState()</code></p>
+<p>returns the provider object for state that was previously there, but has altered.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ProviderNode</span>(<span class="hljs-params">ProviderData</span>) </span>{
+  <span class="hljs-keyword">var</span> self      = <span class="hljs-keyword">this</span>;
+  <span class="hljs-keyword">var</span> name      = <span class="hljs-literal">undefined</span>;
+  <span class="hljs-keyword">var</span> appid     = <span class="hljs-literal">undefined</span>;
+  <span class="hljs-keyword">var</span> version   = <span class="hljs-literal">undefined</span>;
+  <span class="hljs-keyword">var</span> steamid   = <span class="hljs-literal">undefined</span>;
+  <span class="hljs-keyword">var</span> timestamp = <span class="hljs-literal">undefined</span>;
+  <span class="hljs-keyword">var</span> previousProviderState = <span class="hljs-literal">undefined</span>;
+  <span class="hljs-keyword">var</span> addedProviderState    = <span class="hljs-literal">undefined</span>;
+
+  <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> ProviderData !== <span class="hljs-string">'undefined'</span>) {
+    <span class="hljs-keyword">this</span>.name      = ProviderData.name;
+    <span class="hljs-keyword">this</span>.appid     = ProviderData.appid;
+    <span class="hljs-keyword">this</span>.version   = ProviderData.version;
+    <span class="hljs-keyword">this</span>.steamid   = ProviderData.steamid;
+    <span class="hljs-keyword">this</span>.timestamp = ProviderData.timestamp;
+  }
+
+  <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> ProviderData.previously !== <span class="hljs-string">'undefined'</span>) {
+    <span class="hljs-keyword">this</span>.previousProviderState = <span class="hljs-keyword">new</span> ProviderNode(ProviderData.previously);
+  }
+
+  <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> ProviderData.added !== <span class="hljs-string">'undefined'</span>) {
+    <span class="hljs-keyword">this</span>.addedProviderState = <span class="hljs-keyword">new</span> ProviderNode(ProviderData.added);
+  }
+
+  <span class="hljs-keyword">this</span>.getPreviousProviderState = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.previousProviderState; };
+  <span class="hljs-keyword">this</span>.getAddedProviderState    = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.addedProviderState; };
+  <span class="hljs-keyword">this</span>.getProviderName          = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name; };
+  <span class="hljs-keyword">this</span>.getProviderAppid         = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.appid; };
+  <span class="hljs-keyword">this</span>.getProviderVersion       = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.version; };
+  <span class="hljs-keyword">this</span>.getProviderSteamid       = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.steamid; };
+  <span class="hljs-keyword">this</span>.getProviderTimestamp     = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.timestamp; }
+}
+exports.ProviderNode = ProviderNode;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
