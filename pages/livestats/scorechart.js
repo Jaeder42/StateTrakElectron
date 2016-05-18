@@ -6,14 +6,13 @@ var winloss = document.getElementById("teamScore");
 loss = 1;
 win = 0;
 drawChart();
-setInterval(drawChart,1000);
-
+setInterval(drawChart,10);
+var myDoughnutChart;
 
 
 function drawChart() {
-    win++;
-    if(win > 16)
-      win = 0;
+  
+
 
 
     winloss.innerHTML = win + ":" + loss;
@@ -38,7 +37,7 @@ function drawChart() {
     };
 
 
-  var myDoughnutChart = new Chart(ctx, {
+  myDoughnutChart = new Chart(ctx, {
       type: 'doughnut',
       data: data,
       options: {

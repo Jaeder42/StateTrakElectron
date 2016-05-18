@@ -31,11 +31,12 @@ app.on('ready', function(){
 
   });
   ipcMain.on('loading',  function(event, arg) {
-    
+
     win.loadURL(`file://${__dirname}/pages/loadingscreen/index.html`);
     win.show();
 
   });
+
 
 
 });
