@@ -19,9 +19,7 @@
       <p id = "roundsLeft">X rounds left</p>
     </div>
 <div class="chartContainer">
-  <canvas id="teamScoreChart" width="280" height="280"></canvas>
-
-
+  <canvas id="teamScoreChart" class="fisrtChart" width="280" height="280" ></canvas>
 </div>
 </div>
 
@@ -29,7 +27,7 @@
 
     <div class="moneyContainer">
       <div class="onLoss">
-        <p>
+        <p style="font-weight: 600;">
           Loss money
         </p>
       <h1 id="lossmoney">
@@ -40,7 +38,7 @@
       </p>
       </div>
       <div class="onWin">
-        <p>
+        <p style="font-weight: 600;">
           Win money
         </p>
       <h1 id="winmoney">
@@ -53,17 +51,46 @@
     </div>
 
     <div class="bonusContainer">
-      <p class = "lossbonus">
-        $16000
+      <p style="font-weight: 600;">
+        Bonus
       </p>
+      <h2 style="font-weight: 600;">$1900</h2>
 
     </div>
 
     <div class="statsContainer">
-
+      <div class="statsContainerMini" id="statskills">
+          <p>Kills</p>
+          <h2 style="font-weight: 600;">999</h2>
+      </div>
+      <div class="statsContainerMini" id="statsassist">
+          <p>Assist</p>
+          <h2 style="font-weight: 600;">999</h2>
+      </div>
+      <div class="statsContainerMini" id="statsdeaths">
+          <p>Deaths</p>
+          <h2 style="font-weight: 600;">999</h2>
+      </div>
+      <div class="statsContainerMini" id="statsmvp">
+          <p>MVP</p>
+          <h2 style="font-weight: 600;">999</h2>
+      </div>
+      <div class="statsContainerMini" id="statsKD">
+          <p>K/D</p>
+          <h2 style="font-weight: 600;">2,5</h2>
+      </div>
+      <div class="statsContainerMini" id="statsHS">
+          <p>HS</p>
+          <h2 style="font-weight: 600;">999</h2>
+      </div>
+      <div class="statsContainerMini" id="statscore">
+          <p>Score</p>
+          <h2 style="font-weight: 600;">999</h2>
+      </div>
     </div>
 
 
   </body>
       <script src = "scorechart.js"></script>
+      <script src = "scorechart_shadow.js"></script>
 </html>

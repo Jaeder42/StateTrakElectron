@@ -3,7 +3,7 @@ var winloss = document.getElementById("teamScore");
 
 //var win = Math.random(0,16);
 //var loss = Math.random(0,16);
-loss = 7;
+loss = 1;
 win = 0;
 drawChart();
 setInterval(drawChart,1000);
@@ -24,15 +24,15 @@ function drawChart() {
           data: [loss, win],
           backgroundColor: [
               "#e94835",
-              "#60c0be"
+              "#12f9d8"
           ],
           hoverBackgroundColor: [
             "#e94835",
-            "#60c0be"
+            "#12f9d8"
           ],
           borderColor: [
             "#e94835",
-            "#60c0be"
+            "#12f9d8"
           ]
       }]
     };
@@ -42,6 +42,7 @@ function drawChart() {
       type: 'doughnut',
       data: data,
       options: {
+
         cutoutPercentage:85,
         animation:{
           animateRotate: false
@@ -49,4 +50,6 @@ function drawChart() {
 
       }
   });
+
+
 }
