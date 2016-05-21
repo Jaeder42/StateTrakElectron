@@ -7,8 +7,8 @@ var statskd = document.getElementById("statsKDs");
 var statshs = document.getElementById("statsHSs");
 var statsscore =document.getElementById("statsscore");
 
-statskd.innerHTML = 0;
-statshs.innerHTML = 0;
+//statskd.innerHTML = 0;
+//statshs.innerHTML = 0;
 
 
 ipcRenderer.on('json', (event, message) => {
