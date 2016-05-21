@@ -6,7 +6,7 @@ var statsmvp = document.getElementById("statsmvps");
 var statskd = document.getElementById("statsKDs");
 var statshs = document.getElementById("statsHSs");
 var statsscore =document.getElementById("statsscore");
-
+var game = require('./GameJS/game.js');
 //statskd.innerHTML = 0;
 //statshs.innerHTML = 0;
 

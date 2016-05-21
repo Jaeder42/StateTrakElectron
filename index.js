@@ -1,10 +1,15 @@
-const electron = require('electron')
+
+
+const electron = require('electron');
 
 const {app} = electron;
 const {BrowserWindow} = electron;
-var win;
-const ipcMain = require('electron').ipcMain;
+const remote = require('electron').remote
 
+var win;
+
+//var game = electron.require('./GameJS/game.js');
+const ipcMain = require('electron').ipcMain;
 
 
 app.on('ready', function(){
@@ -14,7 +19,7 @@ app.on('ready', function(){
     resizable: false,
     maximizable: false,
     icon: "assets/icon2_1024px.png",
-    backgroundColor: "#2b063d"
+    backgrfoundColor: "#2b063d"
   })
   win.loadURL(`file://${__dirname}/pages/loadingscreen/index.html`);
 
