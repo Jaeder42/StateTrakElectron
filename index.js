@@ -74,7 +74,7 @@ server = http.createServer( function(req, res) {
             win.webContents.send("json", body);
             var round = new Round();
             round.updateRound(body);
-            game.updateRound(round.roundnr, round);
+            game.updateRound(round);
         	res.end( '' );
         });
     }
