@@ -1,6 +1,6 @@
 
 
-var Game = function(){
+var game = function Game(){
   var rounds;
   var over = false;
   var win = false;
@@ -8,10 +8,10 @@ var Game = function(){
     rounds[roundnr] = round;
   }
   function saveGame(roundnr){
-    for (int i = 0; i < roundnr;; i++){
+    for (i = 0; i < roundnr; i++){
       rounds[i].saveGame();
     }
   }
 };
 
-module.exports = new Game();
+module.exports = game;

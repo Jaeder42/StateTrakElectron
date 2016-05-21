@@ -4,11 +4,12 @@ const electron = require('electron');
 
 const {app} = electron;
 const {BrowserWindow} = electron;
-const remote = require('electron').remote
+
 
 var win;
 
-//var game = electron.require('./GameJS/game.js');
+var Game = require('./GameJS/game.js');
+var Round = require('./GameJS/round.js');
 const ipcMain = require('electron').ipcMain;
 
 
@@ -56,6 +57,7 @@ fs = require('fs');
 
 port = 3000;
 host = '127.0.0.1';
+var game = new Game();
 
 server = http.createServer( function(req, res) {
 
@@ -70,6 +72,9 @@ server = http.createServer( function(req, res) {
         req.on('end', function () {
             //console.log("POST payload: " + body);
             win.webContents.send("json", body);
+            var round = new Round();
+            round.updateRound(body);
+            game.updateRound(round.roundnr, round);
         	res.end( '' );
         });
     }

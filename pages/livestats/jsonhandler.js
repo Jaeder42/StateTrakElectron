@@ -6,7 +6,8 @@ var statsmvp = document.getElementById("statsmvps");
 var statskd = document.getElementById("statsKDs");
 var statshs = document.getElementById("statsHSs");
 var statsscore =document.getElementById("statsscore");
-var game = require('./GameJS/game.js');
+//var Game = require('../../GameJS/game.js');
+//var Round = require('../../GamesJS/round.js');
 //statskd.innerHTML = 0;
 //statshs.innerHTML = 0;
 
@@ -41,8 +42,10 @@ ipcRenderer.on('json', (event, message) => {
 
 
     function populatelive(){
+
       var matchstats = jobject.player.match_stats;
       if(matchstats != null){
+
         statskills.innerHTML = matchstats.kills;
         statsassists.innerHTML = matchstats.assists;
         statsdeaths.innerHTML = matchstats.deaths;
