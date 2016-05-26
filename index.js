@@ -10,7 +10,10 @@ var win;
 
 var Game = require('./GameJS/game.js');
 var Round = require('./GameJS/round.js');
+
 const ipcMain = require('electron').ipcMain;
+
+
 
 
 app.on('ready', function(){
@@ -72,8 +75,8 @@ server = http.createServer( function(req, res) {
         req.on('end', function () {
             //console.log("POST payload: " + body);
             win.webContents.send("json", body);
-            var round = new Round();
-            round.updateRound(body);
+            var round = new Round(body);
+
             game.updateRound(round);
         	res.end( '' );
         });
