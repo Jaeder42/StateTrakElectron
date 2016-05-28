@@ -1,11 +1,29 @@
 {
   "users":{
     "jaeder42":{
-      "kills": 12312,
-      "assists":12314,
-      "mvps": 123,
-      "deaths": 23333,
-      "wins": 123,
+      "kills": 0,
+      "assists":0,
+      "mvps": 0,
+      "deaths": 0,
+      "wins": 0,
+      "weapons":[
+        {
+          "name":"ak47",
+          "kills":0
+        },
+        {
+          "name"
+        },
+        {
+          "m4a4":0
+        },
+        {
+          "galil":0
+        },
+        {
+          ""
+        }
+      ],
       "matches":[
         {
         "match":{

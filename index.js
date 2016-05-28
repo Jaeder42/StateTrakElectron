@@ -11,6 +11,8 @@ var win;
 var Game = require('./GameJS/game.js');
 var Round = require('./GameJS/round.js');
 
+var game = new Game();
+
 const ipcMain = require('electron').ipcMain;
 
 
@@ -55,13 +57,19 @@ app.on('ready', function(){
 
 });
 
+function gameLoop(body){
+  win.webContents.send("json", body);
+  var round = new Round(body);
+
+  game.updateRound(round);
+}
 http = require('http');
 fs = require('fs');
 
 port = 3000;
 host = '127.0.0.1';
-var game = new Game();
 
+//Gets the gamestateintegration http request and handles
 server = http.createServer( function(req, res) {
 
     if (req.method == 'POST') {

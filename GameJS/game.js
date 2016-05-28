@@ -1,4 +1,5 @@
 var rounds = [];
+var providerid = 'jaeder42';
 var over = false;
 var win = false;
 var roundnr = 0;
@@ -6,30 +7,83 @@ var currentKills = 0;
 var currentMoney;
 var spentMoney = 0;
 var lossbonus = 1400;
-var kills;
-var deaths;
-var assists;
-var mvps;
-var hs;
-var score;
+var kills = 0;
+var deaths = 0;
+var assists = 0;
+var mvps = 0;
+var hs = 0;
+var score = 0;
+var over = false;
+//TODO if over && mapphase == live new game
 
 var firebase = require("firebase");
+firebase.initializeApp({
+  serviceAccount: {
+    projectId: "project-4827775819308929475",
+    clientEmail: "statetrakclient@project-4827775819308929475.iam.gserviceaccount.com",
+    privateKey: "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCR7UFw1048nzfa\nEDZblgrTc48m+oi+Mqx38Bn0ONXwnko4Cn3ck+5SMo3HjyfcakLxFadsWcxCX6an\n2ICBbTIFLXmWLv9d4U7DLm4lgktIy9QcWa/o3Y700NtYFYCPB3WuKC849VyIszyt\nWpbHzS6yYRGuCLlhe75E+LDJz09bcPUXZLNhUrXUAC8GUg5gjF7NUKmRnRzmG3gj\ndGx8AFbPzrtP/SgAlK5omSqO0YMN7kLZMhoRsNcYv2G5NDsFHqUDZ+MKnN3xqXmS\nbUceiTfft83TVwvmswElTTXfd7oYv4JRswHe998lZqNc3+bTCF1L0SvH2/iRA8lT\n9NCNIfe/AgMBAAECggEAT3GqIeOlfU11G6ud3EiYRjvwYFke3uU5jeZSSuoyVtfm\nMhJMKS0EHw3UsCMYoV/cZ+HRDyToFe57DX/JniyzgawbOI8HibWiqpH5d0Qy9kO5\ni2GsagtMy6107MRwA+4cvB62brztjqJ90yaxVb83v/cmp+ep/Q9gK650mLnbSz0i\n8hN0I2ZUd+92HxBZn3ZW6HPSQuR7PrJ9scTiLw8e65IOhz2m2YqNY/01ueLszQkp\nuALmGjStk15exWJgk88z5NRsXjdswdZv7F/KYmu4VAAz80G8xSsmYFKL22c/d1Sw\nRRP+ok4/OqmSEXYDjZXjV7wQclyyoGSdMj/7X8SzwQKBgQDnCjAdf6cLD6VpWVSo\neB1VNPNiAv4ak8KpHXlV840urJPSHSm41YY7cUlgy4zpce0fI8aoujN+Y75KRHKC\nopszeRU3PM53JQf/Fk/p++GkNhQQHvDWDvYCF3WdFKcDnEFSE2OV4JItp3SFR9GO\nHpzaYWPq2cgVWlYiX0RwW9jz4QKBgQChsR4Rib5hcWALouJJIUhA402NxHUpuAM8\nWwI2laSDrftupVihx6ZeI9uEkpvopK3ssFesr6ig0tMGzBrtrEDgCyvAg4nUVRXR\nKx3/OBfPtK94//oJ2lm/HuIxcyY4JKeFE36dTlQeIXIqhDZBFlXSVRMKOVuRGBMp\nPfeE+yJfnwKBgCFw+hHq/jS9qQWcpoJUEHra1Tekkz8pkA2GdJ+aRx8wX50UF4vn\nbCyCc0qNa/IGSXouZXzapsVujoaVbbW275v9tLJwHLpmI8gqZJrLmJd6NGE4+Uci\nlz0qRB3edWYyYcoNgGabQM1W5ai9Ann9uFprqli9+RYOI1WKUI+q27ZBAoGAcv7W\n1b5TSlYp6tyzdzNWgd+nPpZkhYE7u+c2EcAnuwc39R9fg9/McNOrwgPLIpBMqjNY\nh5Z+pbKLJyBuXm7NzQnk2gwzMHI7DAJQWT15od1tlu7m068ZeRXr5SNyISfghIKy\n4AnfRXagDaDuPSg3bVnYKsNUXkLzDbfmnAtIDR0CgYEAii6C6k2rZKyVfcoUrgGt\njQrGrbL28T5sPL1mbvt4xK1egfxcT/5gUY9ToXpVqVmPktNFnXwgBARdWrwiIiVN\n2BFYtheud0xZ0rI4h9KRszG8UZVQxbPi2bi/oK+l1Qlj35fw2W5eoYPptvodujCw\nPXzn6t5KPo9rbOXVKPoFK6I=\n-----END PRIVATE KEY-----\n"
+  },
+  databaseURL: "https://project-4827775819308929475.firebaseio.com/"
+});
 
+
+
+firebase.database().ref('/users/jaeder42').once('value').then(function(snapshot) {
+  kills = snapshot.val().kills;
+});
+
+//TODO RMV DEBUGSTUFF
+//saveGame();
+
+function writeUserData(userId, kills, deaths) {
+  firebase.database().ref('users/' + userId).update({
+    kills: kills,
+    deaths: deaths,
+    test: "hej"
+  });
+}
 var game = function Game(){
 
 
 
-  function saveGame(roundnr){
-    for (i = 0; i < roundnr; i++){
-      rounds[i].saveGame();
-    }
-  }
+
 };
 
 module.exports = game;
 
+function saveGame(){
+
+  for (i = 0; i < roundnr; i++){
+    rounds[i].saveGame();
+  }
+
+  win = true;
+matchdata = {
+  kills :kills,
+  deaths : deaths,
+  assists : assists,
+  mvps : mvps,
+  score: score
+};
+var newMatchKey = firebase.database().ref().child('users').push().key;
+   var updates = {};
+   updates['/users/'+providerid+'/matches/' + newMatchKey] = matchdata;
+   firebase.database().ref().update(updates);
+
+
+}
+
 function checkGameOver(){
-  phase = rounds[roundnr].roundphase;
+  phase = rounds[roundnr].getMapPhase();
+  console.log(phase);
+  if(phase == 'gameover'){
+    if(!over)
+      saveGame();
+  }
+  else if (over){
+    rounds = [];
+    over = false;
+  }
 }
 function calclossbonus(){
   var losses = 0;
@@ -68,18 +122,29 @@ game.prototype.updateRound = function(round){
 
 
     roundnr = round.getRoundNr();
+
+
+
+
     if(rounds[roundnr] == null){
       rounds[roundnr] = round;
-      //currentMoney = rounds[roundnr].getMoney();
+      currentMoney = rounds[roundnr].getMoney();
       var spentMoney = 0;
     }else{
       rounds[roundnr] = round;
-      //spentMoney = currentMoney - rounds[roundsnr].getMoney();
+      spentMoney = currentMoney - rounds[roundnr].getMoney();
     }
+
+    kills = round.getKills();
+    assists = round.getAssists();
+    deaths = round.getDeaths();
+    mvps = round.getMvps();
+    score = round.getScore();
+
     calclossbonus();
 
-    //calcRoundType(spentMoney);
+    calcRoundType(spentMoney);
 
-    //checkGameOver();
+    checkGameOver();
 
 };
