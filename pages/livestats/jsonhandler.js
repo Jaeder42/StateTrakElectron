@@ -22,6 +22,15 @@ ipcRenderer.on('json', (event, message) => {
         updatescorechart();
     });
 
+  ipcRenderer.on('updatelive-reply', (event, message) => {
+    jobject = JSON.parse(message);
+    statsHSs.innerHTML = jobject.hs;
+    statsKDs.innerHTML = jobject.kd;
+    winmoney.innerHTML = jobject.winmoney;
+    lossmoney.innerHTML = jobject.lossmoney;
+    lossbonus.innerHTML = jobject.lossbonus;
+  });
+
     function updatescorechart(){
       playerteam = jobject.player.team;
       var win = 0;
@@ -52,4 +61,5 @@ ipcRenderer.on('json', (event, message) => {
         statsmvp.innerHTML = matchstats.mvps;
         statsscore.innerHTML = matchstats.score;
       }
+      ipcRenderer.send('updatelive', null);
     }

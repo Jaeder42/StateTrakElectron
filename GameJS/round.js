@@ -47,6 +47,9 @@ function saveRound(){
 
 
 };
+round.prototype.getRoundshs = function () {
+  return hs;
+};
 round.prototype.getProviderID = function () {
   return providerid;
 };

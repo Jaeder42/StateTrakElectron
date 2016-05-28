@@ -25,8 +25,9 @@ app.on('ready', function(){
     resizable: false,
     maximizable: false,
     icon: "assets/icon2_1024px.png",
-    backgrfoundColor: "#2b063d"
+    backgroundColor: "#2b063d"
   })
+
   win.loadURL(`file://${__dirname}/pages/loadingscreen/index.html`);
 
 

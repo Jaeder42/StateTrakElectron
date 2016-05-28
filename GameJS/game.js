@@ -14,7 +14,11 @@ var mvps = 0;
 var hs = 0;
 var score = 0;
 var over = false;
+var kd = 0;
 //TODO if over && mapphase == live new game
+
+
+const ipcMain = require('electron').ipcMain;
 
 var firebase = require("firebase");
 firebase.initializeApp({
@@ -77,8 +81,10 @@ function checkGameOver(){
   phase = rounds[roundnr].getMapPhase();
   console.log(phase);
   if(phase == 'gameover'){
-    if(!over)
+    if(!over){
       saveGame();
+      over = true;
+    }
   }
   else if (over){
     rounds = [];
@@ -118,32 +124,65 @@ function calcRoundType(spentMoney){
   }
 }
 
+function calchs(){
+  hs = 0;
+  for (i = 0; i < roundnr; i++){
+    hs += rounds[i].getRoundshs();
+  }
+}
+
+ipcMain.on('updatelive', (event, arg) => {
+  var moneyonwin = rounds[roundnr].getMoney() + 3250;
+  var moneyonloss = rounds[roundnr].getMoney() + lossbonus;
+
+  data = {
+    lossbonus: lossbonus,
+    lossmoney: moneyonloss,
+    winmoney: moneyonwin,
+    kd: kd,
+    hs: hs
+  }
+  event.sender.send('updatelive-reply', JSON.stringify(data));
+
+});
+
+
 game.prototype.updateRound = function(round){
 
 
     roundnr = round.getRoundNr();
 
-
-
-
     if(rounds[roundnr] == null){
       rounds[roundnr] = round;
       currentMoney = rounds[roundnr].getMoney();
       var spentMoney = 0;
-    }else{
+    }else if(round.getRoundphase() != over){
       rounds[roundnr] = round;
       spentMoney = currentMoney - rounds[roundnr].getMoney();
     }
+    calchs();
+    calclossbonus();
+    calcRoundType(spentMoney);
+
+  /*    win.webContents.send("winmoney", moneyonwin);
+
+    win.webContents.send("lossmoney", moneyonloss);
+    win.webContents.send("lossbonus", lossbonus);
+    */
 
     kills = round.getKills();
     assists = round.getAssists();
     deaths = round.getDeaths();
     mvps = round.getMvps();
     score = round.getScore();
+    kd = Math.round(kills/deaths);
 
-    calclossbonus();
+    /*win.webContents.send("kd", kd);
+    win.webContents.send("hs", hs);*/
 
-    calcRoundType(spentMoney);
+
+
+
 
     checkGameOver();
 
