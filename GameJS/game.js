@@ -151,7 +151,7 @@ game.prototype.updateRound = function(round){
 
 
     roundnr = round.getRoundNr();
-
+    providerid = round.getProviderID();
     if(rounds[roundnr] == null){
       rounds[roundnr] = round;
       currentMoney = rounds[roundnr].getMoney();
