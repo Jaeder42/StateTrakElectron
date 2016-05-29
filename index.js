@@ -59,10 +59,11 @@ app.on('ready', function(){
 });
 
 function gameLoop(body){
-  win.webContents.send("json", body);
+
   var round = new Round(body);
 
   game.updateRound(round);
+  win.webContents.send("json", body);
 }
 http = require('http');
 fs = require('fs');
