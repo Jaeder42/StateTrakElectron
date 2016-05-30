@@ -56,9 +56,11 @@ var game = function Game(){
 module.exports = game;
 
 function saveGame(){
-
+roundstosave = [];
   for (i = 0; i < roundnr; i++){
-    rounds[i].saveGame();
+    if(rounds[i] != null){
+    roundstosave[i] = rounds[i].saveRound();
+  }
   }
 
   win = true;
@@ -67,7 +69,8 @@ matchdata = {
   deaths : deaths,
   assists : assists,
   mvps : mvps,
-  score: score
+  score: score,
+  rounds: roundstosave
 };
 var newMatchKey = firebase.database().ref().child('users').push().key;
    var updates = {};
@@ -93,8 +96,10 @@ function checkGameOver(){
 }
 function calclossbonus(){
   var losses = 0;
-  for ( i = roundnr; i > 0; i--){
-    if(rounds[i].win()){
+  var lossbonus = 1400;
+  for ( i = roundnr-1; i > 0; i--){
+    if(rounds[i] != null){
+    if(!rounds[i].win()){
       losses++;
     }
     else{
@@ -102,6 +107,10 @@ function calclossbonus(){
       break;
     }
   }
+  else {
+    break;
+  }
+}
   if(losses > 4){ losses = 4}
   lossbonus = lossbonus + (500*losses);
 
@@ -127,7 +136,10 @@ function calcRoundType(spentMoney){
 function calchs(){
   hs = 0;
   for (i = 0; i < roundnr; i++){
-    hs += rounds[i].getRoundshs();
+    if(rounds[i] != null){
+      hs += rounds[i].getRoundshs();
+      console.log(hs);
+    }
   }
 }
 
@@ -150,7 +162,9 @@ ipcMain.on('updatelive', (event, arg) => {
 game.prototype.updateRound = function(round){
 
 
+if(!over){
     roundnr = round.getRoundNr();
+    console.log(roundnr);
     providerid = round.getProviderID();
     if(rounds[roundnr] == null){
       rounds[roundnr] = round;
@@ -179,11 +193,12 @@ game.prototype.updateRound = function(round){
 
     /*win.webContents.send("kd", kd);
     win.webContents.send("hs", hs);*/
+    console.log (rounds);
 
 
 
-
-
+}
     checkGameOver();
+
 
 };

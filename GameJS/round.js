@@ -23,18 +23,26 @@ jobject = JSON.parse(jsonstr);
 providerid = jobject.provider.steamid;
 if(jobject.player != null){
   var matchstats = jobject.player.match_stats;
+  var playerstate = jobject.player.state;
   if(matchstats != null){
     kills = matchstats.kills;
     assists = matchstats.assists;
     deaths = matchstats.deaths;
     mvps = matchstats.mvps;
-    hs = matchstats.round_killhs;
-    roundkills = matchstats.round_kills;
+
     score = matchstats.score;
+
+  }
+  if(playerstate != null){
+    money = playerstate.money;
+    hs = playerstate.round_killhs;
+    roundkills = playerstate.round_kills;
+
   }
 
   if(jobject.map != null ){
     mapphase = jobject.map.phase;
+    roundnr = jobject.map.round;
   }
 
 
@@ -47,6 +55,9 @@ function saveRound(){
 
 
 };
+round.prototype.win = function () {
+  return false;
+}
 round.prototype.getRoundshs = function () {
   return hs;
 };
@@ -89,6 +100,16 @@ round.prototype.getScore = function () {
 
 
 round.prototype.saveRound = function () {
-
+  data = {
+    kills: kills,
+    deaths: deaths,
+    assists: assists,
+    mvps: mvps,
+    score: score,
+    hs: hs,
+    roundkills: roundkills,
+    roundnr: roundnr
+  }
+  return data;
 };
 module.exports = round;

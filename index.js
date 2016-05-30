@@ -84,10 +84,7 @@ server = http.createServer( function(req, res) {
         });
         req.on('end', function () {
             //console.log("POST payload: " + body);
-            win.webContents.send("json", body);
-            var round = new Round(body);
-
-            game.updateRound(round);
+            gameLoop(body);
         	res.end( '' );
         });
     }
