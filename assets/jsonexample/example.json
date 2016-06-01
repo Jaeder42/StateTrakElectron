@@ -1,0 +1,54 @@
+{
+  "users":{
+    "jaeder42":{
+      "kills": 0,
+      "assists":0,
+      "mvps": 0,
+      "deaths": 0,
+      "wins": 0,
+      "weapons":[
+        {
+          "name":"ak47",
+          "kills":0
+        },
+        {
+          "name"
+        },
+        {
+          "m4a4":0
+        },
+        {
+          "galil":0
+        },
+        {
+          ""
+        }
+      ],
+      "matches":[
+        {
+        "match":{
+          "matchid":1312,
+          "kills":14,
+          "deaths":23,
+          "mvps":3,
+          "win":1,
+          "assists":5,
+          "rounds":[
+          {
+            "round":{
+              "roundnr":1,
+              "kills":1,
+              "deaths": 1,
+              "assits": 1,
+              "mvps":1,
+              "win":1
+          }
+          }
+        ]
+      }
+    }
+      ]
+    }
+
+  }
+}

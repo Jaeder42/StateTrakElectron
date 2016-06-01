@@ -3,19 +3,32 @@ var winloss = document.getElementById("teamScore");
 
 //var win = Math.random(0,16);
 //var loss = Math.random(0,16);
-loss = 1;
+loss = 0;
 win = 0;
-drawChart();
-setInterval(drawChart,10);
-var myDoughnutChart;
 
+//setInterval(drawChart,10);
+var myDoughnutChart;
+drawChart();
+
+
+ipcRenderer.on('scorechart', (event, message) => {
+      jobject = JSON.parse(message);
+      win = jobject.win;
+      loss = jobject.loss;
+      console.log(message)
+      drawChart();
+    });
 
 function drawChart() {
-  
+
 
 
 
     winloss.innerHTML = win + ":" + loss;
+    if (loss == 0 && win == 0){
+      loss = 1;
+      win = 1;
+    }
     var data = {
     labels: [],
     datasets: [

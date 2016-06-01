@@ -1,0 +1,85 @@
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13533,
+		"steamid": "76561198034951321",
+		"timestamp": 1463148230
+	},
+	"map": {
+		"mode": "competitive",
+		"name": "de_dust2",
+		"phase": "live",
+		"round": 4,
+		"team_ct": {
+			"score": 1
+		},
+		"team_t": {
+			"score": 3
+		}
+	},
+	"round": {
+		"phase": "live"
+	},
+	"player": {
+		"steamid": "76561198034951321",
+		"name": "Mäster Jaeder",
+		"team": "T",
+		"activity": "playing",
+		"state": {
+			"health": 100,
+			"armor": 100,
+			"helmet": true,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 3250,
+			"round_kills": 0,
+			"round_killhs": 0
+		},
+		"weapons": {
+			"weapon_0": {
+				"name": "weapon_knife_t",
+				"paintkit": "default",
+				"type": "Knife",
+				"state": "active"
+			},
+			"weapon_1": {
+				"name": "weapon_tec9",
+				"paintkit": "cu_tec9_sandstorm",
+				"type": "Pistol",
+				"ammo_clip": 24,
+				"ammo_clip_max": 24,
+				"ammo_reserve": 120,
+				"state": "holstered"
+			},
+			"weapon_2": {
+				"name": "weapon_c4",
+				"paintkit": "default",
+				"type": "C4",
+				"state": "holstered"
+			},
+			"weapon_3": {
+				"name": "weapon_awp",
+				"paintkit": "aq_awp_twine",
+				"type": "SniperRifle",
+				"ammo_clip": 10,
+				"ammo_clip_max": 10,
+				"ammo_reserve": 30,
+				"state": "holstered"
+			}
+		},
+		"match_stats": {
+			"kills": 9,
+			"assists": 1,
+			"deaths": 1,
+			"mvps": 2,
+			"score": 24
+		}
+	},
+	"previously": {
+		"round": {
+			"phase": "freezetime"
+		}
+	}
+}
