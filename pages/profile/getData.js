@@ -27,14 +27,7 @@ function populate(){
   var matches = user.matches;
 
   matches.forEach(populateRow);
-  matches.forEach(populateRow);
-  matches.forEach(populateRow);
-  matches.forEach(populateRow);
-  matches.forEach(populateRow);
-  matches.forEach(populateRow);
-
-
-
+  
 }
 
 function populateRow(item, index){

@@ -60,9 +60,10 @@ app.on('ready', function(){
 
 function gameLoop(body){
 
-  var round = new Round(body);
 
-  game.updateRound(round);
+  //console.log("Round" + round.getScore());
+
+  game.updateRound(body);
   win.webContents.send("json", body);
 }
 http = require('http');
@@ -92,7 +93,7 @@ server = http.createServer( function(req, res) {
     {
         console.log("Not expecting other request types...");
         res.writeHead(200, {'Content-Type': 'text/html'});
-		var html = '<html><body>HTTP Server at http://' + host + ':' + port + '</body></html>';
+		      var html = '<html><body>HTTP Server at http://' + host + ':' + port + '</body></html>';
         res.end(html);
     }
 
