@@ -1,4 +1,4 @@
-var ctx = document.getElementById("teamScoreChart");
+var ctx = document.getElementById("roundScoreChart");
 var winloss = document.getElementById("teamScore");
 
 //var win = Math.random(0,16);
@@ -7,60 +7,83 @@ loss = 0;
 win = 0;
 
 //setInterval(drawChart,10);
-var myDoughnutChart;
+var roundBarChart;
+var rounds = [];
+var round = 20;
+
 drawChart();
+
 
 
 ipcRenderer.on('scorechart', (event, message) => {
       jobject = JSON.parse(message);
       win = jobject.win;
       loss = jobject.loss;
-      console.log(message)
+      rounds = jobject.rounds;
+      round = jobject.round;
       drawChart();
     });
 
 function drawChart() {
 
-
-
+  var labels =[];
+  for(i = 0; i < 31; i++){
+    labels.push(i);
+  }
 
     winloss.innerHTML = win + ":" + loss;
-    if (loss == 0 && win == 0){
-      loss = 1;
-      win = 1;
+
+    var datarray = [];
+
+    if(rounds != null){
+    for(i = rounds.length; i>0; i--){
+      datarray.push(rounds[i].kills);
     }
+
+  }
+  if(round > 30){
+    labels.push(round);
+  }
+
+/*  for(i = 0; i < 5; i++){
+    datarray.push(i);
+    console.log(datarray);
+  }*/
     var data = {
-    labels: [],
-    datasets: [
+    labels: labels,
+    datasets:[
       {
-          data: [loss, win],
-          backgroundColor: [
-              "#e94835",
-              "#12f9d8"
-          ],
-          hoverBackgroundColor: [
-            "#e94835",
-            "#12f9d8"
-          ],
-          borderColor: [
-            "#e94835",
-            "#12f9d8"
-          ]
-      }]
+          data: datarray,
+          backgroundColor: "#999999",
+          hoverBackgroundColor: "#999999",
+          borderColor:"#999999"
+
+      }
+    ]
     };
 
 
-  myDoughnutChart = new Chart(ctx, {
-      type: 'doughnut',
+  roundScoreChart = new Chart(ctx, {
+      type: 'bar',
       data: data,
       options: {
+        scales: {
+                xAxes: [{
+                  ticks:{
+                    min: 0,
 
-        cutoutPercentage:85,
-        animation:{
-          animateRotate: false
+                  }
+                }],
+                yAxes: [{
+                  display: false,
+                  ticks: {
+                    min: 0,
+                    max: 5
+                  }
+                }]
+            }
         }
 
-      }
   });
 
 

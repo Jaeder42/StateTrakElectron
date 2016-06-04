@@ -18,6 +18,7 @@ var game = function Game(){
   var score = 0;
   var over = false;
   var kd = 0;
+  var killswithweapon = [];
   //TODO if over && mapphase == live new game
 
 
@@ -108,6 +109,12 @@ var game = function Game(){
     lossbonus = lossbonus + (500*losses);
 
   }
+  function detectKillWeapon(){
+    newkills = rounds.getKills();
+    if(kills < newkills){
+      killswithweapon[newkills] = rounds[roundnr].getCurrentWeapon();
+    }
+  }
 
   function calcRoundType(spentMoney){
     if(spentMoney <= 1000){
@@ -161,18 +168,21 @@ var game = function Game(){
       roundnr = round.getRoundNr();
 
       providerid = round.getProviderID();
-      rounds[roundnr] = new Round(body);
+
       for(i = 0; i < rounds.length;i++)
         console.log (i + " " +rounds[i].getRoundNr());
-    /*  if(rounds[roundnr] === null){
+      if(rounds[roundnr] === null){
+        round[roundnr] = round;
         currentMoney = rounds[roundnr].getMoney();
         var spentMoney = 0;
       }else if(round.getRoundphase() != over){
+        round[roundnr] = round;
         var spentMoney = currentMoney - rounds[roundnr].getMoney();
-      }*/
+      }
       calchs();
       calclossbonus();
-      //calcRoundType(spentMoney);
+      calcRoundType(spentMoney);
+
 
 
 
@@ -183,8 +193,18 @@ var game = function Game(){
       score = round.getScore();
       kd = Math.round(kills/deaths);
 
+      roundstodisplay = [];
+      for (i = 0; i < rounds.length; i++){
+        roundstodisplay.push(rounds[i].kills);
+      }
 
-
+      datatosend = {
+        rounds: roundstodisplay,
+        wins: round.getWins(),
+        losses: round.getLoss(),
+        round: roundnr
+      }
+      ipcRenderer.send('scorechart', datatosend);
 
 
 

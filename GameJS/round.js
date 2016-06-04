@@ -17,19 +17,23 @@ this.roundphase = '';
 this.roundnr = 0;
 this.providerid = 0;
 this.mapphase = '';
+this.playerteam;
+this.win = 0;
+this.loss = 0;
+
 
 var jobject = JSON.parse(jsonstr);
-//TODO add the jsondata to the variables above
+
 this.providerid = jobject.provider.steamid;
 if(jobject.player != null){
   var matchstats = jobject.player.match_stats;
   var playerstate = jobject.player.state;
+  var playerweapons = jobject.player.weapons;
   if(matchstats != null){
     this.kills = matchstats.kills;
     this.assists = matchstats.assists;
     this.deaths = matchstats.deaths;
     this.mvps = matchstats.mvps;
-
     this.score = matchstats.score;
 
   }
@@ -45,7 +49,26 @@ if(jobject.player != null){
   if(jobject.map != null ){
     this.mapphase = jobject.map.phase;
     this.roundnr = jobject.map.round;
+    this.playerteam = jobject.player.team;
+    if(this.playerteam == "CT"){
+      this.win = jobject.map.team_ct.score;
+      this.loss = jobject.map.team_t.score;
+    }
+    else {
+      this.win =  jobject.map.team_t.score;
+      this.loss = jobject.map.team_ct.score;
+    }
   }
+
+
+
+Round.prototype.getWins() = function () {
+  return this.wins;
+};
+
+Round.prototype.getLoss() = function () {
+  return this.loss;
+};
 
   Round.prototype.getRoundshs = function () {
     return this.hs;
@@ -103,7 +126,8 @@ if(jobject.player != null){
       score: this.score,
       hs: this.hs,
       roundkills: this.roundkills,
-      roundnr: this.roundnr
+      roundnr: this.roundnr,
+      roundtype: this.roundtype
     }
     return data;
   };
