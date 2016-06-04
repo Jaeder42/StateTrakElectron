@@ -3,11 +3,12 @@ html, body {
     margin: 0;
     padding: 0em;
     height: 100%;
-    /*background-image: url(../../../assets/background.png);
+    background-image: url(../../../assets/background/start.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center bottom;*/
-    background-color: #1e2124;
+    background-position: center bottom;
+    background-blend-mode: overlay;
+    background-color: #2e3136;
     font-family: 'Open Sans', sans-serif;
     color: white;
     overflow: hidden;
