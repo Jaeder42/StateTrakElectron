@@ -4,11 +4,12 @@ html, body {
     margin: 0;
     padding: 0em;
     height: 100%;
-    background-image: url(../../../assets/background.png);
+    background-image: url(../../../assets/background/start.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center bottom;
-    background-color: #ccc;
+    background-blend-mode: overlay;
+    background-color: #2e3136;
     font-family: 'Open Sans', sans-serif;
     color: white;
     overflow: hidden;
@@ -17,11 +18,11 @@ html, body {
 
 
 .loss-color{
-  color: rgba(240,156,0,1)
+  color: #ffa000;
 }
 
 .win-color{
-  color: rgba(0,244,0,1)
+  color: #00e600;
 }
 
 /*Största*/
@@ -61,7 +62,10 @@ p{
   position: absolute;
   text-align: center;
   overflow: hidden;
-  background: rgba(46,49,54,.9);
+  background-color: rgba(46,49,54,.8);
+  box-shadow:
+  inset 0px 5px 10px 0px rgba(0,0,0,.2),
+  inset 0px -5px 10px 0px rgba(0,0,0,.2);
 }
 .roundScoreContainer{
   width: 100%;
@@ -84,14 +88,17 @@ p{
   width: 100%;
   height: 100%;
   overflow: hidden;
-  color: rgba(46,49,54,1);
+  color: #fff;
 }
 
 .moneyContainer{
   width: 100%;
   height: 16%;
   margin-top: 70%;
-  background: rgba(46,49,54,.9);
+  background-color: rgba(46,49,54,.8);
+  box-shadow:
+  inset 0px 5px 10px 0px rgba(0,0,0,.2),
+  inset 0px -5px 10px 0px rgba(0,0,0,.2);
   position: absolute;
 }
 
@@ -109,7 +116,10 @@ p{
   width:100%;
   height:8%;
   text-align: center;
-  background: rgba(46,49,54,.9);
+  background-color: rgba(46,49,54,.8);
+  box-shadow:
+  inset 0px 5px 10px 0px rgba(0,0,0,.2),
+  inset 0px -5px 10px 0px rgba(0,0,0,.2);
    overflow: hidden;
    margin-top:92.5%;
    position: absolute;
@@ -119,7 +129,10 @@ p{
 .statsContainerBig{
   width:100%;
   text-align: center;
-  background: rgba(46,49,54,.9);
+  background: rgba(46,49,54,.8);
+  box-shadow:
+  inset 0px 5px 10px 0px rgba(0,0,0,.2),
+  inset 0px -5px 10px 0px rgba(0,0,0,.2);
    overflow: hidden;
    margin-top:107.5%;
    position: absolute;
