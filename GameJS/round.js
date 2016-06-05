@@ -62,20 +62,19 @@ if(jobject.player != null){
 
 
 
-Round.prototype.getWins() = function () {
-  return this.wins;
-};
 
-Round.prototype.getLoss() = function () {
-  return this.loss;
-};
 
   Round.prototype.getRoundshs = function () {
     return this.hs;
   };
+  round.prototype.getRoundKills = function () {
+    return this.roundkills;
+  };
+
   Round.prototype.win = function () {
     return false;
   }
+
   /*round.prototype.getRoundshs = function () {
     return hs;
   };*/

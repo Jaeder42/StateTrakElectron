@@ -48,11 +48,11 @@ app.on('ready', function(){
     win.show();
 
   });
-  ipcMain.on('scorechart',  function(event, arg) {
+/*  ipcMain.on('scorechart',  function(event, arg) {
 
     event.sender.send('scorechart', arg);
 
-  });
+  });*/
 
 
 
@@ -60,8 +60,7 @@ app.on('ready', function(){
 
 function gameLoop(body){
 
-
-  //console.log("Round" + round.getScore());
+  //var round = new Round(body);
 
   game.updateRound(body);
   win.webContents.send("json", body);
@@ -85,7 +84,11 @@ server = http.createServer( function(req, res) {
         });
         req.on('end', function () {
             //console.log("POST payload: " + body);
+
             gameLoop(body);
+
+            win.webContents.send("json", body);
+
         	res.end( '' );
         });
     }
@@ -93,7 +96,7 @@ server = http.createServer( function(req, res) {
     {
         console.log("Not expecting other request types...");
         res.writeHead(200, {'Content-Type': 'text/html'});
-		      var html = '<html><body>HTTP Server at http://' + host + ':' + port + '</body></html>';
+		var html = '<html><body>HTTP Server at http://' + host + ':' + port + '</body></html>';
         res.end(html);
     }
 

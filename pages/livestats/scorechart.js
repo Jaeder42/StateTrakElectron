@@ -17,8 +17,9 @@ drawChart();
 
 ipcRenderer.on('scorechart', (event, message) => {
       jobject = JSON.parse(message);
-      win = jobject.win;
-      loss = jobject.loss;
+      console.log(jobject);
+      win = jobject.wins;
+      loss = jobject.losses;
       rounds = jobject.rounds;
       round = jobject.round;
       drawChart();
@@ -37,7 +38,7 @@ function drawChart() {
 
     if(rounds != null){
     for(i = rounds.length; i>0; i--){
-      datarray.push(rounds[i].kills);
+      datarray.push(rounds[i]);
     }
 
   }

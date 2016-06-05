@@ -18,17 +18,20 @@ ipcRenderer.on('json', (event, message) => {
       if(jobject.provider.steamid == jobject.player.steamid)
         populatelive();
 
-      if(jobject.map != null)
-        updatescorechart();
+
     });
 
   ipcRenderer.on('updatelive-reply', (event, message) => {
     jobject = JSON.parse(message);
     statsHSs.innerHTML = jobject.hs;
     statsKDs.innerHTML = jobject.kd;
-    winmoney.innerHTML = jobject.winmoney;
-    lossmoney.innerHTML = jobject.lossmoney;
-    lossbonus.innerHTML = jobject.lossbonus;
+  //  winmoney.innerHTML = jobject.winmoney;
+  //  lossmoney.innerHTML = jobject.lossmoney;
+  //  lossbonus.innerHTML = jobject.lossbonus;
+  });
+  ipcRenderer.on('scorechart', (event, message) => {
+      jobject = JSON.parse(message);
+      console.log(jobject);
   });
 
     function updatescorechart(){
