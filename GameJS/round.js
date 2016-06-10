@@ -13,23 +13,30 @@ this.activeWeapon = '';
 this.roundtype = '';
 this.money = 0;
 this.kevlar = 0;
+this.helmet = false;
 this.roundphase = '';
 this.roundnr = 0;
 this.providerid = 0;
 this.mapphase = '';
 this.playerteam;
-this.win = 0;
-this.loss = 0;
+this.win = false;
+this.wins = 0;
+this.losses = 0;
+this.timestamp = '';
+this.spentmoney = 0;
+this.ace = false;
 
 
 var jobject = JSON.parse(jsonstr);
-
+console.log(jsonstr);
 this.providerid = jobject.provider.steamid;
+this.timestamp = jobject.provider.timestamp;
+var roundobject = jobject.round;
 if(jobject.player != null){
   var matchstats = jobject.player.match_stats;
   var playerstate = jobject.player.state;
   var playerweapons = jobject.player.weapons;
-  if(matchstats != null){
+  if(matchstats != null && jobject.player.steamid == this.providerid){
     this.kills = matchstats.kills;
     this.assists = matchstats.assists;
     this.deaths = matchstats.deaths;
@@ -42,55 +49,82 @@ if(jobject.player != null){
     this.money = playerstate.money;
     this.hs = playerstate.round_killhs;
     this.roundkills = playerstate.round_kills;
-
+    this.kevlar = playerstate.armor;
+    this.helmet = playerstate.helmet;
+    if(this.roundkills == 5){
+      this.ace = true;
+    }
   }
 }
+
 
   if(jobject.map != null ){
     this.mapphase = jobject.map.phase;
     this.roundnr = jobject.map.round;
     this.playerteam = jobject.player.team;
     if(this.playerteam == "CT"){
-      this.win = jobject.map.team_ct.score;
-      this.loss = jobject.map.team_t.score;
+      this.wins = jobject.map.team_ct.score;
+      this.losses = jobject.map.team_t.score;
     }
     else {
       this.win =  jobject.map.team_t.score;
       this.loss = jobject.map.team_ct.score;
     }
   }
+  if(roundobject != null){
+    this.roundphase = roundobject.phase;
+    if(this.roundphase == 'over'){
+      this.roundnr = this.roundnr-1;
+      if(roundobject.win_team == this.playerteam){
+        this.win = true;
+      }
+    }
+    //TODO Add check to see if round was won.
+  }
 
 
 
 
 
-  Round.prototype.getRoundshs = function () {
+  round.prototype.getRoundshs = function () {
     return this.hs;
+  };
+  round.prototype.getTimestamp = function () {
+    return this.timestamp;
   };
   round.prototype.getRoundKills = function () {
     return this.roundkills;
   };
+  round.prototype.setSpentMoney = function(spentmoney) {
+    this.spentmoney = spentmoney;
+  };
 
-  Round.prototype.win = function () {
-    return false;
+  round.prototype.getWin = function () {
+    return this.win;
+  }
+  round.prototype.getWins = function () {
+    return this.wins;
+  };
+  round.prototype.getLosses = function() {
+    return this.losses;
   }
 
   /*round.prototype.getRoundshs = function () {
     return hs;
   };*/
-  Round.prototype.getProviderID = function () {
+  round.prototype.getProviderID = function () {
     return this.providerid;
   };
-  Round.prototype.setRoundType = function(type){
+  round.prototype.setRoundType = function(type){
     this.roundtype = type;
   }
-  Round.prototype.getRoundphase = function(){
+  round.prototype.getRoundphase = function(){
     return this.roundphase;
   }
-  Round.prototype.getMapPhase = function () {
+  round.prototype.getMapPhase = function () {
     return this.mapphase;
   }
-  Round.prototype.getRoundNr = function(){
+  round.prototype.getRoundNr = function(){
       return this.roundnr;
   };
   Round.prototype.getKills = function () {

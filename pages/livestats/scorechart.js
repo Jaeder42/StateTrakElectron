@@ -9,7 +9,7 @@ win = 0;
 //setInterval(drawChart,10);
 var roundBarChart;
 var rounds = [];
-var round = 20;
+var round = 0;
 
 drawChart();
 
@@ -21,11 +21,15 @@ ipcRenderer.on('scorechart', (event, message) => {
       win = jobject.wins;
       loss = jobject.losses;
       rounds = jobject.rounds;
-      round = jobject.round;
+      round = jobject.roundid;
       drawChart();
     });
 
 function drawChart() {
+  console.log(win);
+  console.log(loss);
+  console.log(rounds);
+  console.log(round);
 
   var labels =[];
   for(i = 0; i < 31; i++){
@@ -37,8 +41,13 @@ function drawChart() {
     var datarray = [];
 
     if(rounds != null){
-    for(i = rounds.length; i>0; i--){
-      datarray.push(rounds[i]);
+    for(i = 0; i<rounds.length; i++){
+      if(rounds[i] != null){
+        datarray.push(rounds[i]);
+    }
+    else{
+      datarray.push(0);
+    }
     }
 
   }
@@ -68,6 +77,7 @@ function drawChart() {
       type: 'bar',
       data: data,
       options: {
+        animation: false,
         scales: {
                 xAxes: [{
                   ticks:{

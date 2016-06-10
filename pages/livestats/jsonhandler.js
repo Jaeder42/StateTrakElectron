@@ -13,7 +13,7 @@ var statsscore =document.getElementById("statsscore");
 
 
 ipcRenderer.on('json', (event, message) => {
-      console.log(message);
+      //console.log(message);
       jobject = JSON.parse(message);
       if(jobject.provider.steamid == jobject.player.steamid)
         populatelive();
@@ -31,7 +31,8 @@ ipcRenderer.on('json', (event, message) => {
   });
   ipcRenderer.on('scorechart', (event, message) => {
       jobject = JSON.parse(message);
-      console.log(jobject);
+    
+      //updatescorechart();
   });
 
     function updatescorechart(){

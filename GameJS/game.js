@@ -19,8 +19,6 @@ var game = function Game(){
   var over = false;
   var kd = 0;
   var killswithweapon = [];
-  //TODO if over && mapphase == live new game
-
 
   const ipcMain = require('electron').ipcMain;
 
@@ -51,12 +49,12 @@ var game = function Game(){
     });
   }*/
   function saveGame(){
-  roundstosave = [];
+  /*roundstosave = [];
     for (i = 0; i < roundnr; i++){
       if(rounds[i] != null){
       roundstosave[i] = rounds[i].saveRound();
     }
-    }
+  }*/
 
     win = true;
     matchdata = {
@@ -65,7 +63,7 @@ var game = function Game(){
       assists : assists,
       mvps : mvps,
       score: score,
-      rounds: roundstosave
+      rounds: rounds
     };
   var newMatchKey = firebase.database().ref().child('users').push().key;
      var updates = {};
@@ -77,7 +75,7 @@ var game = function Game(){
   function checkGameOver(){
     if(rounds[roundnr] != null){
     phase = rounds[roundnr].getMapPhase();
-    console.log(phase);
+  //  console.log(phase);
     if(phase === 'gameover'){
       if(!over){
         saveGame();
@@ -95,7 +93,7 @@ var game = function Game(){
     var lossbonus = 1400;
     for ( i = roundnr-1; i > 0; i--){
       if(rounds[i] != null){
-      if(!rounds[i].win()){
+      if(!rounds[i].getWin()){
         losses++;
       }
       else{
@@ -119,6 +117,7 @@ var game = function Game(){
   }
 
   function calcRoundType(spentMoney){
+    if(rounds[roundnr]!=null){
     if(spentMoney <= 1000){
       //TODO check if player has armor/rifle
       if(roundnr === 1 || roundnr === 16){
@@ -134,6 +133,7 @@ var game = function Game(){
       rounds[roundnr].setRoundType("buy");
     }
   }
+}
 
   function calchs(){
     hs = 0;
@@ -146,7 +146,8 @@ var game = function Game(){
   }
 
   ipcMain.on('updatelive', (event, arg) => {
-
+  //  console.log("Tjo " + roundnr);
+  //  console.log(rounds);
     if(rounds[roundnr] != null){
 
     var moneyonwin = rounds[roundnr].getMoney() + 3250;
@@ -154,24 +155,27 @@ var game = function Game(){
 
     data = {
       lossbonus: lossbonus,
-      //lossmoney: moneyonloss,
-      //winmoney: moneyonwin,
+      lossmoney: moneyonloss,
+      winmoney: moneyonwin,
       kd: kd,
       hs: hs
-    }
+    };
     roundstodisplay = [];
-    for (i = 0; i < roundnr; i++){
-      if(rounds[i] != null)
+    for (i = 0; i <= roundnr; i++){
+      if(rounds[i] != null){
       roundstodisplay.push(rounds[i].getRoundKills());
+    }
+    else roundstodisplay.push(0);
     }
 
 
     datatosend = {
       rounds: roundstodisplay,
-      wins: 0,//,round.getWins(),
-      losses:0, // round.getLoss(),
+      wins: rounds[roundnr].getWins(),
+      losses: rounds[roundnr].getLosses(),
       roundid: roundnr
-    }
+    };
+    console.log(JSON.stringify(datatosend));
     event.sender.send('scorechart', JSON.stringify(datatosend));
 
     event.sender.send('updatelive-reply', JSON.stringify(data));
@@ -182,15 +186,24 @@ var game = function Game(){
   game.prototype.updateRound = function(body){
 
     round = new Round(body);
-
+    roundnr = round.getRoundNr();
+    rounds[roundnr] = round;
+    providerid = round.getProviderID();
   if(!over && round != null){
-      roundnr = round.getRoundNr();
 
-      providerid = round.getProviderID();
-      rounds[roundnr] = round;
-      //for(i = 0; i < rounds.length;i++)
-        //console.log (i + " " +rounds[i].getRoundNr());
-  /* if(rounds[roundnr] === null){
+    if(roundnr > 0){
+      if(rounds[roundnr-1] != null){
+      var spentmoney = rounds[roundnr-1].getMoney() - rounds[roundnr].getMoney();
+      rounds[roundnr].setSpentMoney(spentmoney);
+    }
+    }
+    else{
+      var spentmoney = 800-rounds[roundnr].getMoney();
+      rounds[roundnr].setSpentMoney(spentmoney);
+    }
+      //rounds[roundnr] = round;
+
+  /*if(rounds[roundnr] === null){
         rounds[roundnr] = round;
         currentMoney = rounds[roundnr].getMoney();
         var spentMoney = 0;
@@ -199,9 +212,7 @@ var game = function Game(){
         var spentMoney = currentMoney - rounds[roundnr].getMoney();
       }*/
       calchs();
-      //calclossbonus();
-      //calcRoundType(spentMoney);
-
+      calclossbonus();
 
 
 
@@ -210,11 +221,7 @@ var game = function Game(){
       deaths = round.getDeaths();
       mvps = round.getMvps();
       score = round.getScore();
-      kd = Math.round(kills/deaths);
-
-
-
-
+      kd = Math.round((kills/deaths)*100)/100;
 
   }
       checkGameOver();
