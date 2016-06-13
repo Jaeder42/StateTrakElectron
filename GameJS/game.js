@@ -187,7 +187,9 @@ var game = function Game(){
 
     round = new Round(body);
     roundnr = round.getRoundNr();
+    if(!round.skip){
     rounds[roundnr] = round;
+
     providerid = round.getProviderID();
   if(!over && round != null){
 
@@ -224,6 +226,7 @@ var game = function Game(){
       kd = Math.round((kills/deaths)*100)/100;
 
   }
+}
       checkGameOver();
 
 

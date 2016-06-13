@@ -25,6 +25,7 @@ this.losses = 0;
 this.timestamp = '';
 this.spentmoney = 0;
 this.ace = false;
+this.skip = false;
 
 
 var jobject = JSON.parse(jsonstr);
@@ -33,10 +34,16 @@ this.providerid = jobject.provider.steamid;
 this.timestamp = jobject.provider.timestamp;
 var roundobject = jobject.round;
 if(jobject.player != null){
+  if(roundobject != null){
+    this.roundphase = roundobject.phase;
+  }
   var matchstats = jobject.player.match_stats;
   var playerstate = jobject.player.state;
   var playerweapons = jobject.player.weapons;
-  if(matchstats != null && jobject.player.steamid == this.providerid){
+  if(jobject.player.steamid == this.providerid){
+    this.skip = true;
+  }
+  if(matchstats != null ){
     this.kills = matchstats.kills;
     this.assists = matchstats.assists;
     this.deaths = matchstats.deaths;
@@ -46,7 +53,9 @@ if(jobject.player != null){
   }
 
   if(playerstate != null){
+    if(this.roundphase != 'over'){
     this.money = playerstate.money;
+  }
     this.hs = playerstate.round_killhs;
     this.roundkills = playerstate.round_kills;
     this.kevlar = playerstate.armor;
@@ -79,7 +88,7 @@ if(jobject.player != null){
         this.win = true;
       }
     }
-    //TODO Add check to see if round was won.
+
   }
 
 
