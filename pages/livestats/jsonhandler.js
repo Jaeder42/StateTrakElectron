@@ -29,11 +29,11 @@ ipcRenderer.on('json', (event, message) => {
   //  lossmoney.innerHTML = jobject.lossmoney;
   //  lossbonus.innerHTML = jobject.lossbonus;
   });
-  ipcRenderer.on('scorechart', (event, message) => {
+  /*ipcRenderer.on('scorechart', (event, message) => {
       jobject = JSON.parse(message);
-    
+
       //updatescorechart();
-  });
+  });*/
 
     function updatescorechart(){
       playerteam = jobject.player.team;
@@ -49,7 +49,7 @@ ipcRenderer.on('json', (event, message) => {
       }
 
       var str = '{"win":"'+win+'", "loss":"'+loss+'" }';
-      ipcRenderer.send('scorechart', str);
+      //ipcRenderer.send('scorechart', str);
 
     }
 

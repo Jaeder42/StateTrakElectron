@@ -1,5 +1,5 @@
 {
-  "name": "electron",
+  "name": "statetraj",
   "version": "1.0.0",
   "description": "d",
   "main": "index.js",
@@ -9,10 +9,19 @@
   "author": "Johan Jäderblom",
   "license": "ISC",
   "devDependencies": {
+    "electron": "^1.3.3",
     "electron-prebuilt": "^1.0.2"
   },
   "dependencies": {
     "chart.js": "^2.1.3",
     "firebase": "^3.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaeder42/StateTrakElectron.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jaeder42/StateTrakElectron/issues"
+  },
+  "homepage": "https://github.com/Jaeder42/StateTrakElectron#readme"
 }
