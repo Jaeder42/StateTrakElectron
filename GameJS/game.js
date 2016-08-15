@@ -24,7 +24,7 @@ var game = function Game(){
 
   var firebase = require("firebase");
   firebase.initializeApp({
-    serviceAccount: "../StateTrak-d54c9c641032.json",
+    serviceAccount: "StateTrak-d54c9c641032.json",
     databaseURL: "https://project-4827775819308929475.firebaseio.com/"
   });
 
