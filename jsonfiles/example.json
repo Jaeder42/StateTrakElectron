@@ -1,0 +1,76 @@
+{
+  "provider": {
+    "name": "Counter-Strike: Global Offensive",
+    "appid": 730,
+    "version": 13516,
+    "steamid": "76561197990354782",
+    "timestamp": 1450654365
+  },
+  "map": {
+    "mode": "casual",
+    "name": "aim_map",
+    "phase": "warmup",
+    "round": 0,
+    "team_ct": {
+      "score": 0
+    },
+    "team_t": {
+      "score": 0
+    }
+  },
+  "player": {
+    "steamid": "76561197990354782",
+    "name": "bitch im fabulous",
+    "team": "CT",
+    "activity": "textinput",
+    "state": {
+      "health": 100,
+      "armor": 100,
+      "helmet": true,
+      "flashed": 0,
+      "smoked": 0,
+      "burning": 0,
+      "money": 10000,
+      "round_kills": 0,
+      "round_killhs": 0
+    },
+    "weapons": {
+      "weapon_0": {
+        "name": "weapon_knife",
+        "paintkit": "default",
+        "type": "Knife",
+        "state": "holstered"
+      },
+      "weapon_1": {
+        "name": "weapon_usp_silencer",
+        "paintkit": "aq_usp_stainless",
+        "type": "Pistol",
+        "ammo_clip": 12,
+        "ammo_clip_max": 12,
+        "ammo_reserve": 24,
+        "state": "active"
+      },
+      "weapon_2": {
+        "name": "weapon_ak47",
+        "paintkit": "default",
+        "type": "Rifle",
+        "ammo_clip": 30,
+        "ammo_clip_max": 30,
+        "ammo_reserve": 90,
+        "state": "holstered"
+      }
+    },
+    "match_stats": {
+      "kills": 0,
+      "assists": 0,
+      "deaths": 0,
+      "mvps": 0,
+      "score": 0
+    }
+  },
+  "previously": {
+    "player": {
+      "activity": "playing"
+    }
+  }
+}

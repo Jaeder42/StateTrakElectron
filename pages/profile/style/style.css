@@ -39,6 +39,7 @@ h1{
   position: absolute;
 }
 .result{
+  text-align: center;
   position: absolute;
 }
 .trophytop{
@@ -70,4 +71,29 @@ h1{
 }
 .resultright{
   margin-left: 500px;
+}
+table{
+  text-align: center;
+  width:600px;
+
+  margin-left: 40px;
+  margin-right: 40px;
+
+  background-color: #591878;
+  overflow-y: scroll;
+
+}
+
+.matchesContainer{
+  margin-top: 440px;
+  width: 100%;
+  height: 360px;
+  overflow: auto;
+
+}
+.match{
+  width: 100px;
+}
+.stats{
+
 }

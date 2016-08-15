@@ -22,7 +22,15 @@ var menuitem = [
           if (focusedWindow)
             focusedWindow.reload();
         }
-    }
+    },
+    {
+        label: 'Toggle Developer Tools',
+        accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+        click(item, focusedWindow) {
+          if (focusedWindow)
+            focusedWindow.webContents.toggleDevTools();
+        }
+      }
   ]
 },
 {
@@ -39,6 +47,14 @@ var menuitem = [
       click: function(item, focusedWindow){
         if(focusedWindow)
           ipcRenderer.send('profile', 'profile');
+      }
+    },
+    {
+      label: 'Loading',
+      accelerator: 'CmdOrCtrl+E',
+      click: function(item, focusedWindow){
+        if(focusedWindow)
+          ipcRenderer.send('loading', 'loading');
       }
     }
 

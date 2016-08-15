@@ -4,118 +4,152 @@ html, body {
     margin: 0;
     padding: 0em;
     height: 100%;
-    background-color: #2b063d;
-    background: linear-gradient(45deg,#2b063d , #591878);
+    background-image: url(../../../assets/background/start.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center bottom;
+    background-blend-mode: overlay;
+    background-color: #2e3136;
     font-family: 'Open Sans', sans-serif;
     color: white;
     overflow: hidden;
-
+    z-index: -9999;
 }
+
+
+.loss-color{
+  color: #ffa000;
+}
+
+.win-color{
+  color: #00e600;
+}
+
+/*Största*/
 h1{
   text-align: center;
+  font-size: 340%;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
 }
-.chartContainer{
-
-  width: 280px;
-  height: 280px;
-  padding-left: 200px;
-  padding-top: 80px;
-  position: absolute;
-
+/*Mellan*/
+h2{
+  margin: 0;
+  padding: 0;
+  font-size: 200%;
+  font-weight: 600;
 }
-#scoreTextContainer{
-  padding-top: 145px;
-  width:280px;
-  height: 280px;
-  padding-left: 200px;
-  position: absolute;
-
-}
-#scoreContainer{
+/*Liten*/
+h3{
   text-align: center;
+  font-size: 340%;
+  margin: 0;
+  padding: 0;
+}
+
+/*Minsta*/
+p{
+  font-size: 80%;
+  margin: 0;
+  padding: 0;
+}
+
+.chartContainer{
+  width: 100%;
+  height: 30%;
+  margin-top: 30%;
+  position: absolute;
+  text-align: center;
+  overflow: hidden;
+  background-color: rgba(46,49,54,.8);
+  box-shadow:
+  inset 0px 5px 10px 0px rgba(0,0,0,.2),
+  inset 0px -5px 10px 0px rgba(0,0,0,.2);
+}
+.roundScoreContainer{
+  width: 100%;
+  height: 100%;
 
 }
-#teamScoreChart{
-  width: 100;
-  height: 100;
-}
-#map{
-  font-size: 15px;
-  height:0px;
-}
-#teamScore{
-  font-size: 40px;
-  height: 0px;
 
 
+.scoreContainer{
+    width: 100%;
+    height: 15%;
+    margin-top: 10%;
+    position: absolute;
+    text-align: center;
 }
-#roundsLeft{
-  font-size: 15px;
+
+
+.scoreTextContainer{
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #fff;
 }
 
 .moneyContainer{
   width: 100%;
-  margin-top: 400px;
+  height: 16%;
+  margin-top: 70%;
+  background-color: rgba(46,49,54,.8);
+  box-shadow:
+  inset 0px 5px 10px 0px rgba(0,0,0,.2),
+  inset 0px -5px 10px 0px rgba(0,0,0,.2);
   position: absolute;
-
 }
 
-#lossmoney{
-  font-size: 200%;
-
-}
-#winmoney{
-  font-size: 200%;
-}
-
-.onLoss{
-  width: 240px;
-  height: 120px;
+.onLoss,.onWin {
+  width: 40%;
+  height: 100%;
   float: left;
   text-align: center;
-  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  background: #591878;
    overflow: hidden;
-   margin-left: 40px;
+   margin-left: 7.5%;
+   padding-top: 1%;
 }
-.onWin{
-  width: 240px;
-  height: 120px;
-  float: right;
-  text-align: center;
-  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  background: #591878;
-   overflow: hidden;
-   margin-right: 40px;
-}
+
 .bonusContainer{
-  width:200px;
-  height: 80px;
-  margin-left: 240px;
+  width:100%;
+  height:8%;
   text-align: center;
-  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  background: #591878;
+  background-color: rgba(46,49,54,.8);
+  box-shadow:
+  inset 0px 5px 10px 0px rgba(0,0,0,.2),
+  inset 0px -5px 10px 0px rgba(0,0,0,.2);
    overflow: hidden;
-   margin-top: 560px;
+   margin-top:92.5%;
    position: absolute;
+   padding-top: 1%;
+}
+
+.statsContainerBig{
+  width:100%;
+  text-align: center;
+  background: rgba(46,49,54,.8);
+  box-shadow:
+  inset 0px 5px 10px 0px rgba(0,0,0,.2),
+  inset 0px -5px 10px 0px rgba(0,0,0,.2);
+   overflow: hidden;
+   margin-top:107.5%;
+   position: absolute;
+
 }
 
 .statsContainer{
-  width:600px;
-  height: 80px;
-  margin-left: 40px;
-  text-align: center;
-  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  -moz-box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  box-shadow: inset 0px 0px 10px 1px rgba(41,0,41,1);
-  background: #591878;
-   overflow: hidden;
-   margin-top: 680px;
-   position: absolute;
+  display: table;
+  table-layout: fixed;
+  width:80%;
+  height:8%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.statsContainerMini{
+  display: table-cell;
+  margin: 0;
+  padding-top:1%;
 }

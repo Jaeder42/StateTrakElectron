@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Profile</title>
     <script src="../scripts/menu.js"></script>
+
         <link rel="stylesheet" type="text/css" href = "style/style.css">
   </head>
   <body>
@@ -18,33 +19,64 @@
   </div>
   <div class="trophyContainer">
     <img class = "trophy trophytop trophyleft"  src = "../../assets/wins.png"/>
-    <p class = "result resulttop resultleft">
+    <p id ="wins" class = "result resulttop resultleft">
       1000
     </p>
     <img class = "trophy trophytop trophymid"  src="../../assets/kills.png"/>
-    <p class = "result resulttop resultmid">
+    <p id ="kills" class = "result resulttop resultmid">
       1000
     </p>
     <img class = "trophy trophytop trophyright"  src="../../assets/headshots.png"/>
-    <p class = "result resulttop resultright">
+    <p id ="headshots" class = "result resulttop resultright">
       1000
     </p>
     <img class = "trophy trophybottom trophyleft"  src="../../assets/mvps.png"/>
-    <p class = "result resultbottom resultleft">
+    <p id = "mvps" class = "result resultbottom resultleft">
       1000
     </p>
     <img class = "trophy trophybottom trophymid"  src="../../assets/assists.png"/>
-    <p class = "result resultbottom resultmid">
+    <p id ="assists"class = "result resultbottom resultmid">
       1000
     </p>
     <img class = "trophy trophybottom trophyright"  src="../../assets/kd.png"/>
-    <p class = "result resultbottom resultright">
+    <p id ="kd" class = "result resultbottom resultright">
       1000
     </p>
   </div>
 
   <div class="matchesContainer">
-    
+    <table >
+      <thead>
+        <tr>
+          <th class = "match">
+            Match
+          </th>
+          <th class = "stats">
+            Win
+          </th>
+          <th class = "stats">
+            Kills
+          </th>
+          <th class = "stats">
+            HS
+          </th>
+          <th class = "stats">
+            MVP
+          </th>
+          <th class = "stats">
+            Assists
+          </th>
+          <th class = "stats">
+            K/D
+          </th>
+        </tr>
+      </thead>
+      <tbody id = "matchtable">
+
+      </tbody>
+    </table>
+
   </div>
   </body>
+  <script src="getData.js"></script>
 </html>

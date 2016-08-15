@@ -13,48 +13,91 @@
 
   <body>
 
-    <div id ="scoreContainer">
-      <div id="scoreTextContainer">
 
-
-
-      <p id = "teamScore">2:5</p>
-      <p id = "roundsLeft">X rounds left</p>
+    <div class="scoreContainer">
+        <div class="scoreTextContainer">
+          <h1 id = "teamScore">2:5</h1>
+          <p>X rounds left</p>
+        </div>
     </div>
+
 <div class="chartContainer">
-  <canvas id="teamScoreChart" width="280" height="280"></canvas>
-
-
+  <div class = "roundScoreContainer">
+   <canvas id="roundScoreChart" class="firstChart" height="25%" width="100%"></canvas>
+ </div>
 </div>
-</div>
+
 
 
 
     <div class="moneyContainer">
       <div class="onLoss">
-      <p id="lossmoney">
-        $2000
+        <p style="font-weight: 600;">
+          Loss money
+        </p>
+      <h1 class="loss-color">
+        $16000
+      </h1>
+      <p>
+        Money over cap $0
       </p>
       </div>
       <div class="onWin">
-      <p id = "winmoney">
-        $2000
+        <p style="font-weight: 600;">
+          Win money
+        </p>
+      <h1 class="win-color">
+        $16000
+      </h1>
+      <p>
+          Money over cap $0
       </p>
       </div>
     </div>
 
     <div class="bonusContainer">
-      <p class = "lossbonus">
-        $2000
+      <p>
+        Bonus
       </p>
+      <h2>$1900</h2>
 
     </div>
-
+<div class="statsContainerBig">
     <div class="statsContainer">
-
+      <div class="statsContainerMini" >
+          <p>Kills</p>
+          <h2 id="statskills">99</h2>
+      </div>
+      <div class="statsContainerMini" >
+          <p>Assist</p>
+          <h2 id="statsassists">99</h2>
+      </div>
+      <div class="statsContainerMini" >
+          <p>Deaths</p>
+          <h2 id="statsdeaths">99</h2>
+      </div>
+      <div class="statsContainerMini" >
+          <p>MVP</p>
+          <h2 id="statsmvps">99</h2>
+      </div>
+      <div class="statsContainerMini" >
+          <p>K/D</p>
+          <h2 id="statsKDs">99</h2>
+      </div>
+      <div class="statsContainerMini" >
+          <p>HS</p>
+          <h2 id="statsHSs">99</h2>
+      </div>
+      <div class="statsContainerMini" >
+          <p>Score</p>
+          <h2 id="statsscore">99</h2>
+      </div>
     </div>
+  </div>
 
 
   </body>
       <script src = "scorechart.js"></script>
+      <!--<script src = "scorechart_shadow.js"></script>-->
+      <script src = "jsonhandler.js"></script>
 </html>

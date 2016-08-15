@@ -1,52 +1,101 @@
-var ctx = document.getElementById("teamScoreChart");
+var ctx = document.getElementById("roundScoreChart");
 var winloss = document.getElementById("teamScore");
 
 //var win = Math.random(0,16);
 //var loss = Math.random(0,16);
-loss = 7;
+loss = 0;
 win = 0;
+
+//setInterval(drawChart,10);
+var roundBarChart;
+var rounds = [];
+var round = 0;
+
 drawChart();
-setInterval(drawChart,1000);
 
 
+
+ipcRenderer.on('scorechart', (event, message) => {
+      jobject = JSON.parse(message);
+      console.log(jobject);
+      win = jobject.wins;
+      loss = jobject.losses;
+      rounds = jobject.rounds;
+      round = jobject.roundid;
+      drawChart();
+    });
 
 function drawChart() {
-    win++;
-    if(win > 16)
-      win = 0;
+  console.log(win);
+  console.log(loss);
+  console.log(rounds);
+  console.log(round);
 
+  var labels =[];
+  for(i = 0; i < 31; i++){
+    labels.push(i);
+  }
 
     winloss.innerHTML = win + ":" + loss;
+
+    var datarray = [];
+
+    if(rounds != null){
+    for(i = 0; i<rounds.length; i++){
+      if(rounds[i] != null){
+        datarray.push(rounds[i]);
+    }
+    else{
+      datarray.push(0);
+    }
+    }
+
+  }
+  if(round > 30){
+    labels.push(round);
+  }
+
+/*  for(i = 0; i < 5; i++){
+    datarray.push(i);
+    console.log(datarray);
+  }*/
     var data = {
-    labels: [],
-    datasets: [
+    labels: labels,
+    datasets:[
       {
-          data: [loss, win],
-          backgroundColor: [
-              "#e94835",
-              "#60c0be"
-          ],
-          hoverBackgroundColor: [
-            "#e94835",
-            "#60c0be"
-          ],
-          borderColor: [
-            "#e94835",
-            "#60c0be"
-          ]
-      }]
+          data: datarray,
+          backgroundColor: "#999999",
+          hoverBackgroundColor: "#999999",
+          borderColor:"#999999"
+
+      }
+    ]
     };
 
 
-  var myDoughnutChart = new Chart(ctx, {
-      type: 'doughnut',
+  roundScoreChart = new Chart(ctx, {
+      type: 'bar',
       data: data,
       options: {
-        cutoutPercentage:85,
-        animation:{
-          animateRotate: false
+        animation: false,
+        scales: {
+                xAxes: [{
+                  ticks:{
+                    min: 0,
+
+                  }
+                }],
+                yAxes: [{
+                  display: false,
+                  ticks: {
+                    min: 0,
+                    max: 5
+                  }
+                }]
+            }
         }
 
-      }
   });
+
+
 }
