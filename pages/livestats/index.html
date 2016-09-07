@@ -12,24 +12,34 @@
 
 
   <body>
+<div class="Div1">
 
-
-    <div class="scoreContainer">
-        <div class="scoreTextContainer">
-          <h1 id = "teamScore">2:5</h1>
-          <p>X rounds left</p>
+<div class="Div2">
+        <div class="Div4">
+          <h3 id="playerName">Bot Todd</h3>
         </div>
-    </div>
 
-<div class="chartContainer">
-  <div class = "roundScoreContainer">
-   <canvas id="roundScoreChart" class="firstChart" height="25%" width="100%"></canvas>
- </div>
+        <div class="Div5">
+          <h1 id ="teamScore">0:0</h1>
+          <div class="Div7">
+          <p id="timeelapsed">00:00:00</p>
+          </div>
+        </div>
+
+        <div class="Div6">
+          <h3 id="mapName">Dust II</h3>
+        </div>
 </div>
 
 
-
-
+<div class="Div3">
+<div class="Div8">
+<img id="modelImage" src="../../img/t_model.png" alt="">
+</div>
+<div class="Div9">
+<div class="topleft">
+<p>Economy</p>
+</div>
     <div class="moneyContainer">
       <div class="onLoss">
         <p style="font-weight: 600;">
@@ -40,6 +50,9 @@
       </h1>
       <p>
         Money over cap $0
+      </p>
+       <p>
+          Bonus $0
       </p>
       </div>
       <div class="onWin">
@@ -52,49 +65,114 @@
       <p>
           Money over cap $0
       </p>
+      <p>
+          Bonus $0
+      </p>
       </div>
     </div>
 
-    <div class="bonusContainer">
-      <p>
-        Bonus
-      </p>
-      <h2>$1900</h2>
 
-    </div>
 <div class="statsContainerBig">
+<div class="topleft">
+<p>Stats</p>
+</div>
     <div class="statsContainer">
       <div class="statsContainerMini" >
           <p>Kills</p>
-          <h2 id="statskills">99</h2>
+          <h2 id="statskills">0</h2>
       </div>
       <div class="statsContainerMini" >
           <p>Assist</p>
-          <h2 id="statsassists">99</h2>
+          <h2 id="statsassists">0</h2>
       </div>
       <div class="statsContainerMini" >
           <p>Deaths</p>
-          <h2 id="statsdeaths">99</h2>
+          <h2 id="statsdeaths">0</h2>
       </div>
       <div class="statsContainerMini" >
           <p>MVP</p>
-          <h2 id="statsmvps">99</h2>
+          <h2 id="statsmvps">0</h2>
       </div>
       <div class="statsContainerMini" >
           <p>K/D</p>
-          <h2 id="statsKDs">99</h2>
+          <h2 id="statsKDs">0</h2>
       </div>
       <div class="statsContainerMini" >
           <p>HS</p>
-          <h2 id="statsHSs">99</h2>
+          <h2 id="statsHSs">0</h2>
       </div>
       <div class="statsContainerMini" >
           <p>Score</p>
-          <h2 id="statsscore">99</h2>
+          <h2 id="statsscore">0</h2>
       </div>
     </div>
   </div>
 
+
+
+
+</div> 
+</div>
+
+<div class="Div2">
+<div class="topleft">
+<p>Weapon</p>
+</div>
+
+
+<div class="weaponContainer">
+
+  <div class="weaponContainerKnife">
+    <div class="topleft">
+      <p style="font-size:50%;">Knife</p>
+    </div>
+      <div class="weaponContainerWeapon">
+        <img id="modelImage" src="../../img/weapons/knife/knife_ct.png" alt="">
+      </div>
+  </div>
+
+  <div class="weaponContainerSecondary">
+    <div class="topleft">
+     <p style="font-size:50%;">Secondary</p>
+    </div>
+      <div class="weaponContainerWeapon">
+        <img id="modelImage" src="../../img/weapons/2/duals.png" alt="">
+      </div>
+  </div>
+
+  <div class="weaponContainerPrimary">
+    <div class="topleft">
+    <p style="font-size:50%;">Primary</p>
+    </div>
+      <div class="weaponContainerWeapon">
+        <img id="modelImage" src="../../img/weapons/1/autoshotgun.png" alt="">
+      </div>
+  </div>
+
+  <div class="weaponContainerNades">
+    <div class="topleft">
+     <p style="font-size:50%;">Nades</p>
+    </div>
+      <div class="weaponContainerWeapon">
+        <img id="modelImage" src="../../img/weapons/nades/inc.png" alt="">
+        <img id="modelImage" src="../../img/weapons/nades/smoke.png" alt="">
+        <img id="modelImage" src="../../img/weapons/nades/nade.png" alt="">
+        <img id="modelImage" src="../../img/weapons/nades/flash.png" alt="">
+      </div>
+  </div>
+
+</div>
+
+</div>
+</div>
+
+
+
+<div class="chartContainer">
+  <div class = "roundScoreContainer">
+   <canvas id="roundScoreChart" class="firstChart" height="25%" width="100%"></canvas>
+ </div>
+</div>
 
   </body>
       <script src = "scorechart.js"></script>
