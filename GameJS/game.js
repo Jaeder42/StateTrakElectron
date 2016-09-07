@@ -45,12 +45,7 @@ var game = function Game(){
     });
   }*/
   function saveGame(){
-  /*roundstosave = [];
-    for (i = 0; i < roundnr; i++){
-      if(rounds[i] != null){
-      roundstosave[i] = rounds[i].saveRound();
-    }
-  }*/
+  
 
     win = true;
     matchdata = {
