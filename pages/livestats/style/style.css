@@ -4,12 +4,7 @@ html, body {
     margin: 0;
     padding: 0em;
     height: 100%;
-    background-image: url(../../../assets/background/start.png);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center bottom;
-    background-blend-mode: overlay;
-    background-color: #2e3136;
+    background-color: #000;
     font-family: 'Open Sans', sans-serif;
     color: white;
     overflow: hidden;
@@ -43,7 +38,7 @@ h2{
 /*Liten*/
 h3{
   text-align: center;
-  font-size: 340%;
+  font-size: 140%;
   margin: 0;
   padding: 0;
 }
@@ -55,17 +50,45 @@ p{
   padding: 0;
 }
 
+/*-------------------Top-------------------*/
+
+.ContainerTop{
+  width:100%;
+  height:8%;
+  padding: 0;
+  margin:0;
+  margin-left: auto;
+  margin-right: auto;
+  overflow:hidden;
+  float:left;
+}
+
+.playerNameContainer, .scoreTextContainer, .mapNameContainer{
+  float:left;
+  width:30%;
+  height: auto;
+  margin: auto;
+
+}
+
+/*-------------------Playerstats-------------------*/
+
+
+/*-------------------Weaponstats-------------------*/
+
+
+
+/*-------------------Chart-------------------*/
+
+
+
+/*-------------------Adds-------------------*/
+
 .chartContainer{
   width: 100%;
   height: 30%;
-  margin-top: 30%;
-  position: absolute;
   text-align: center;
   overflow: hidden;
-  background-color: rgba(46,49,54,.8);
-  box-shadow:
-  inset 0px 5px 10px 0px rgba(0,0,0,.2),
-  inset 0px -5px 10px 0px rgba(0,0,0,.2);
 }
 .roundScoreContainer{
   width: 100%;
@@ -92,14 +115,9 @@ p{
 }
 
 .moneyContainer{
+  padding-top: 5%;
   width: 100%;
   height: 16%;
-  margin-top: 70%;
-  background-color: rgba(46,49,54,.8);
-  box-shadow:
-  inset 0px 5px 10px 0px rgba(0,0,0,.2),
-  inset 0px -5px 10px 0px rgba(0,0,0,.2);
-  position: absolute;
 }
 
 .onLoss,.onWin {
@@ -110,46 +128,186 @@ p{
    overflow: hidden;
    margin-left: 7.5%;
    padding-top: 1%;
+
 }
 
-.bonusContainer{
-  width:100%;
-  height:8%;
-  text-align: center;
-  background-color: rgba(46,49,54,.8);
-  box-shadow:
-  inset 0px 5px 10px 0px rgba(0,0,0,.2),
-  inset 0px -5px 10px 0px rgba(0,0,0,.2);
-   overflow: hidden;
-   margin-top:92.5%;
-   position: absolute;
-   padding-top: 1%;
-}
 
 .statsContainerBig{
+  margin-top: 30%;
   width:100%;
   text-align: center;
-  background: rgba(46,49,54,.8);
-  box-shadow:
-  inset 0px 5px 10px 0px rgba(0,0,0,.2),
-  inset 0px -5px 10px 0px rgba(0,0,0,.2);
    overflow: hidden;
-   margin-top:107.5%;
-   position: absolute;
 
 }
 
 .statsContainer{
+  margin-top: 5%;
+    margin-left: 5%;
+  margin-right: 5%;
   display: table;
   table-layout: fixed;
-  width:80%;
+  width:90%;
   height:8%;
   margin-left: auto;
   margin-right: auto;
+
+    text-align: center;
+
+
 }
 
 .statsContainerMini{
+  margin-left: 5%;
+  margin-right: 5%;
   display: table-cell;
   margin: 0;
   padding-top:1%;
+
+      text-align: center;
+
+}
+
+
+
+
+.Div1
+{
+width:100%;
+margin:0 auto;
+overflow:hidden;
+float:left;
+}
+
+
+.Div2
+{
+
+width:100%;
+overflow:hidden;
+float:left;
+}
+
+.Div4, .Div6
+{
+  margin-top: 3%;
+
+float:left;
+width:29%;
+}
+
+.Div5
+{
+
+float:left;
+width:39%;
+}
+
+.Div7
+{
+  text-align: center;
+
+width:80%;
+margin:1% auto;
+}
+
+
+.Div3
+{
+width:99%;
+clear:both;
+
+}
+
+.Div8
+{
+width:29%;
+float:left;
+
+}
+
+.Div9
+{
+
+width:69%;
+float:left;
+
+}
+
+
+.topleft{
+  text-align: left;
+  float: left;
+  z-index: 999´;
+  position: absolute;
+  width: 10%;
+  margin-left:0;
+  margin-top: 0;
+  padding: 0;
+}
+
+
+
+
+.weaponContainer{
+  margin-top: 2.5%;
+  display: table;
+  table-layout: fixed;
+  width:100%;
+  height: 20%;
+   float: left;
+   position: relative;
+}
+
+.weaponContainerKnife, .weaponContainerNades, .weaponContainerSecondary{
+  width: 20%;
+  display: table-cell;
+  margin: 0;
+  text-align: left;
+   float: left; 
+
+
+}
+
+.weaponContainerPrimary{
+  width: 30%;
+  display: table-cell;
+  margin: 0;
+  text-align: left;
+   float: left;
+
+}
+
+ .weaponContainerKnife img{
+  padding-top: 15%;
+   width: 80%;
+  height: auto;
+ }
+
+.weaponContainerSecondary img{
+    padding-top: 15%;
+  width: 60%;
+  height: auto;
+}
+
+.weaponContainerPrimary img{
+    padding-top: 10%;
+  width: 85%;
+  height: auto;
+}
+
+
+.weaponContainerNades img{
+    padding-top: 10%;
+  width: 20%;
+  height: auto;
+}
+
+.weaponContainerWeapon{
+  width: 100%;
+  height: 100%;
+  display: table-cell;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+   float: left;
 }
