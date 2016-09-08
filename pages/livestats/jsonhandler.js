@@ -10,6 +10,7 @@ var statsscore =document.getElementById("statsscore");
 //var Round = require('../../GamesJS/round.js');
 //statskd.innerHTML = 0;
 //statshs.innerHTML = 0;
+var secondaryImg = document.getElementById('modelImageSecondary');
 
 
 ipcRenderer.on('json', (event, message) => {
@@ -65,5 +66,21 @@ ipcRenderer.on('json', (event, message) => {
         statsmvp.innerHTML = matchstats.mvps;
         statsscore.innerHTML = matchstats.score;
       }
+
+      //TODO populate weapon "view"
+      //Using jobject.player.weapons.weaponX
+       var weapons = jobject.player.weapons;
+       if(weapons != null){
+         var knife = weapons.weapon_0;
+         //TODO Needs controls to check if weapon is present
+         //Enkelt exempel på pistol
+         var pistol = weapons.weapon_1;
+         var pistolname = pistol.name;
+         if(pistolname == "weapon_usp_silencer"){
+           secondaryImg.src = 'path/to/image';
+         }
+
+       }
+
       ipcRenderer.send('updatelive', null);
     }
