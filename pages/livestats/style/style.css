@@ -53,6 +53,7 @@ p{
 /*-------------------Top-------------------*/
 
 .ContainerTop{
+  border: #fff 1px solid;
   width:100%;
   height:8%;
   padding: 0;
@@ -64,6 +65,7 @@ p{
 }
 
 .playerNameContainer, .scoreTextContainer, .mapNameContainer{
+  border: #fff 1px solid;
   float:left;
   width:30%;
   height: auto;
@@ -115,13 +117,15 @@ p{
 }
 
 .moneyContainer{
+  border: #fff 1px solid;
   padding-top: 5%;
   width: 100%;
   height: 16%;
 }
 
 .onLoss,.onWin {
-  width: 40%;
+  border: #fff 1px solid;
+  width: 42%;
   height: 100%;
   float: left;
   text-align: center;
@@ -133,6 +137,8 @@ p{
 
 
 .statsContainerBig{
+  padding-top: 5%;
+  border: #fff 1px solid;
   margin-top: 30%;
   width:100%;
   text-align: center;
@@ -141,6 +147,7 @@ p{
 }
 
 .statsContainer{
+  border: #fff 1px solid;
   margin-top: 5%;
     margin-left: 5%;
   margin-right: 5%;
@@ -157,6 +164,7 @@ p{
 }
 
 .statsContainerMini{
+  border: #fff 1px solid;
   margin-left: 5%;
   margin-right: 5%;
   display: table-cell;
@@ -170,56 +178,54 @@ p{
 
 
 
-.Div1
-{
+.Div1{
 width:100%;
 margin:0 auto;
 overflow:hidden;
 float:left;
+border: #fff 1px solid;
 }
 
 
-.Div2
-{
-
+.Div2{
+border: #fff 1px solid;
 width:100%;
 overflow:hidden;
 float:left;
+margin-right: auto;
+margin-left: auto;
 }
 
-.Div4, .Div6
-{
-  margin-top: 3%;
+.Div4, .Div6{
+
+margin-top: 3%;
+float:left;
+width:30%;
+}
+
+.Div5{
 
 float:left;
-width:29%;
+width:40%;
 }
 
-.Div5
-{
-
-float:left;
-width:39%;
-}
-
-.Div7
-{
-  text-align: center;
-
+.Div7{
+border: #fff 1px solid;
+text-align: center;
 width:80%;
 margin:1% auto;
 }
 
 
-.Div3
-{
-width:99%;
+.Div3{
+width:100%;
 clear:both;
-
+border: #fff 1px solid;
 }
 
 .Div8
 {
+border: #fff 1px solid;
 width:29%;
 float:left;
 
@@ -227,7 +233,7 @@ float:left;
 
 .Div9
 {
-
+border: #fff 1px solid;
 width:69%;
 float:left;
 
@@ -243,12 +249,14 @@ float:left;
   margin-left:0;
   margin-top: 0;
   padding: 0;
+  border: #fff 1px solid;
 }
 
 
 
 
 .weaponContainer{
+  border: #fff 1px solid;
   margin-top: 2.5%;
   display: table;
   table-layout: fixed;
@@ -259,7 +267,8 @@ float:left;
 }
 
 .weaponContainerKnife, .weaponContainerNades, .weaponContainerSecondary{
-  width: 20%;
+
+  width: 25%;
   display: table-cell;
   margin: 0;
   text-align: left;
@@ -269,7 +278,8 @@ float:left;
 }
 
 .weaponContainerPrimary{
-  width: 30%;
+
+  width: 25%;
   display: table-cell;
   margin: 0;
   text-align: left;
@@ -278,31 +288,36 @@ float:left;
 }
 
  .weaponContainerKnife img{
+  border: #fff 1px solid;
   padding-top: 15%;
-   width: 80%;
+   width: 70%;
   height: auto;
  }
 
 .weaponContainerSecondary img{
+  border: #fff 1px solid;
     padding-top: 15%;
   width: 60%;
   height: auto;
 }
 
 .weaponContainerPrimary img{
+  border: #fff 1px solid;
     padding-top: 10%;
-  width: 85%;
-  height: auto;
+  width: 70%;
+  height: 100%;
 }
 
 
 .weaponContainerNades img{
+  border: #fff 1px solid;
     padding-top: 10%;
-  width: 22%;
+  width: 20%;
   height: auto;
 }
 
 .weaponContainerWeapon{
+  border: #fff 1px solid;
   width: 100%;
   height: 100%;
   display: table-cell;
