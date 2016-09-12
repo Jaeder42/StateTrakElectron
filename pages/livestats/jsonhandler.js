@@ -10,7 +10,7 @@ var statsscore =document.getElementById("statsscore");
 //var Round = require('../../GamesJS/round.js');
 //statskd.innerHTML = 0;
 //statshs.innerHTML = 0;
-var secondaryImg = document.getElementById('modelImageSecondary');
+var secondaryImg = document.getElementById('secondaryImg');
 
 
 ipcRenderer.on('json', (event, message) => {
@@ -69,18 +69,23 @@ ipcRenderer.on('json', (event, message) => {
 
       //TODO populate weapon "view"
       //Using jobject.player.weapons.weaponX
+
        var weapons = jobject.player.weapons;
        if(weapons != null){
          var knife = weapons.weapon_0;
          //TODO Needs controls to check if weapon is present
          //Enkelt exempel på pistol
          var pistol = weapons.weapon_1;
-         var pistolname = pistol.name;
-         if(pistolname == "weapon_usp_silencer"){
-           secondaryImg.src = 'path/to/image';
-         }
 
-       }
+         var pistolname = pistol.name;
+
+         if(pistolname == "weapon_usp_silencer"){
+           secondaryImg.src ="./../../img/weapons/2/usp.png";
+         }else if(pistolname == "weapon_fiveseven"){
+           secondaryImg.src ="./../../img/weapons/2/fiveseven.png";
+         }
+       } 
 
       ipcRenderer.send('updatelive', null);
     }
+
