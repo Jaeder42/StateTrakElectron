@@ -71,6 +71,7 @@ ipcRenderer.on('json', (event, message) => {
       //Using jobject.player.weapons.weaponX
 
        var weapons = jobject.player.weapons;
+
        if(weapons != null){
          var knife = weapons.weapon_0;
          //TODO Needs controls to check if weapon is present
@@ -83,6 +84,22 @@ ipcRenderer.on('json', (event, message) => {
            secondaryImg.src ="./../../img/weapons/2/usp.png";
          }else if(pistolname == "weapon_fiveseven"){
            secondaryImg.src ="./../../img/weapons/2/fiveseven.png";
+         }else if(pistolname == "weapon_cz75a"){
+           secondaryImg.src ="./../../img/weapons/2/cz.png";
+         }else if(pistolname == "weapon_deagle"){
+           secondaryImg.src ="./../../img/weapons/2/juan.png";
+         }else if(pistolname == "weapon_glock"){
+           secondaryImg.src ="./../../img/weapons/2/glock.png";
+         }else if(pistolname == "weapon_hkp2000"){
+           secondaryImg.src ="./../../img/weapons/2/p2000.png";
+         }else if(pistolname == "weapon_p250"){
+           secondaryImg.src ="./../../img/weapons/2/p250.png";
+         }else if(pistolname == "weapon_tec9"){
+           secondaryImg.src ="./../../img/weapons/2/tec9.png";
+         }else if(pistolname == "weapon_usp_silencer "){
+           secondaryImg.src ="./../../img/weapons/2/usp.png";
+         }else if(pistolname == "weapon_revolver"){
+           secondaryImg.src ="./../../img/weapons/2/revolver.png";
          }
        } 
 
